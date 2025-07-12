@@ -1,46 +1,38 @@
-// Initialize Lucide icons
-document.addEventListener('DOMContentLoaded', function() {
-    setupMobileMenu();
-});
-
-function setupMobileMenu() {
-    const mobileMenuButton = document.querySelector('.mobile-menu-button');
-    const sidebar = document.querySelector('.sidebar');
-    const sidebarClose = document.querySelector('.sidebar-close');
-    
-    if (!mobileMenuButton || !sidebar || !sidebarClose) return;
+$(document).ready(function() {    
+    // Mobile menu functionality
+    const $mobileMenuButton = $('.mobile-menu-button');
+    const $sidebar = $('.sidebar');
+    const $sidebarClose = $('.sidebar-close');
+    const $body = $('body');
     
     // Toggle mobile menu
-    mobileMenuButton.addEventListener('click', function() {
-        sidebar.classList.add('mobile-active');
-        document.body.classList.add('menu-open');
+    $mobileMenuButton.on('click', function() {
+        $sidebar.addClass('mobile-active');
+        $body.addClass('menu-open');
         lucide.createIcons(); // Refresh icons
     });
     
     // Close mobile menu
-    sidebarClose.addEventListener('click', function() {
-        sidebar.classList.remove('mobile-active');
-        document.body.classList.remove('menu-open');
+    $sidebarClose.on('click', function() {
+        $sidebar.removeClass('mobile-active');
+        $body.removeClass('menu-open');
     });
     
     // Close when clicking outside
-    document.addEventListener('click', function(event) {
-        const isClickInside = sidebar.contains(event.target);
-        const isMenuButton = mobileMenuButton.contains(event.target);
-        
-        if (!isClickInside && !isMenuButton && sidebar.classList.contains('mobile-active')) {
-            sidebar.classList.remove('mobile-active');
-            document.body.classList.remove('menu-open');
+    $(document).on('click', function(event) {
+        if (!$(event.target).closest('.sidebar').length && 
+            !$(event.target).closest('.mobile-menu-button').length &&
+            $sidebar.hasClass('mobile-active')) {
+            $sidebar.removeClass('mobile-active');
+            $body.removeClass('menu-open');
         }
     });
     
     // Handle window resize
-    function handleResize() {
-        if (window.innerWidth > 768) {
-            sidebar.classList.remove('mobile-active');
-            document.body.classList.remove('menu-open');
+    $(window).on('resize', function() {
+        if ($(window).width() > 768) {
+            $sidebar.removeClass('mobile-active');
+            $body.removeClass('menu-open');
         }
-    }
-    
-    window.addEventListener('resize', handleResize);
-}
+    });
+});
