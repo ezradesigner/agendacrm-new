@@ -528,7 +528,7 @@ body {
     cursor: pointer;
     background: transparent !important;
     box-shadow: none !important;
-    margin-right: 0.5rem;
+    margin-right: auto;
     position: static;
 }
 
@@ -573,20 +573,22 @@ body {
     /* Mobile header layout */
     .top-bar {
         padding: 0.75rem 1rem;
-        display: block;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        align-items: center;
     }
     
     .top-bar-actions {
         display: flex;
-        justify-content: flex-end;
         gap: 0.5rem;
-        margin-left: auto;
-        width: auto;
+        margin-left: 0; /* Reset any previous margin */
     }
     
     .search-container {
+        order: 2;
         width: 100%;
-        margin-top: 0.75rem;
+        margin-top: 0.5rem;
     }
     
     .mobile-icon-only .desktop-text {
@@ -595,7 +597,6 @@ body {
     /* Adjust button sizes */
     .btn-primary.mobile-icon-only {
         padding: 0.5rem;
-        min-width: auto;
     }
     
     .btn-notification {
