@@ -575,31 +575,39 @@ body {
     /* Mobile header layout */
     .top-bar {
         padding: 0.75rem 1rem;
+        display: block;
+    }
+    .mobile-header-row {
         display: flex;
-        flex-wrap: wrap;
-        gap: 0.75rem;
-    }
-    
-    .search-container {
-        order: 2;
+        justify-content: space-between;
+        align-items: center;
         width: 100%;
-        margin-top: 0.5rem;
     }
-    
+    .mobile-menu-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border: none;
+        background: none;
+        cursor: pointer;
+    }
     .top-bar-actions {
         display: flex;
         gap: 0.5rem;
-        margin-left: auto;
-    }
-    
+        margin-left: 0;
+    }    
+    .search-container {
+        width: 100%;
+        margin-top: 0.5rem;
+    }    
     .mobile-icon-only .desktop-text {
         display: none;
-    }
-    
+    }    
     .btn-primary.mobile-icon-only {
         padding: 0.5rem;
     }
-    
     .btn-notification {
         width: 36px;
         height: 36px;
