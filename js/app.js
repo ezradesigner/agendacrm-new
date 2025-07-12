@@ -1,6 +1,4 @@
-    // Initialize Lucide icons
-    lucide.createIcons();
-    
+   
     // Mobile menu functionality
     document.addEventListener('DOMContentLoaded', function() {
         const mobileMenuButton = document.querySelector('.mobile-menu-button');
