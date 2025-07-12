@@ -80,29 +80,24 @@
         <div class="main-content">
             <!-- Top-bar -->
             <div class="top-bar">
-                <div class="mobile-header-row">
-                    <button class="mobile-menu-button">
-                        <i data-lucide="menu"></i>
-                    </button>
-                    <div class="top-bar-actions">
-                        <button class="btn-notification">
-                            <i data-lucide="bell" class="icon"></i>
-                            <span class="notification-badge">3</span>
-                        </button>
-                        <button class="btn-primary mobile-icon-only">
-                            <i data-lucide="user-plus" class="icon"></i>
-                            <span class="desktop-text">Novo Contato</span>
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="search-container">
+                <div class="search-container desktop-search">
                     <form action="https://app.agendacrm.com.br/contacts" method="GET">
                         <div class="search-input">
                             <i data-lucide="search" class="icon"></i>
                             <input type="search" name="q" placeholder="Pesquisar contatos...">
                         </div>
                     </form>
+                </div>
+                
+                <div class="top-bar-actions">
+                    <button class="btn-notification">
+                        <i data-lucide="bell" class="icon"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                    <button class="btn-primary">
+                        <i data-lucide="user-plus" class="icon"></i>
+                        <span class="desktop-text">Novo Contato</span>
+                    </button>
                 </div>
             </div>
             
