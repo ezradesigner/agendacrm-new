@@ -37,3 +37,56 @@
     margin-right: 0;
     margin-left: 0.5rem;
 }
+/* Mobile Menu Button (hidden on desktop) */
+.mobile-menu-button {
+    display: none;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 100;
+    background: var(--color-card);
+    border: none;
+    border-radius: var(--rounded);
+    padding: 0.5rem;
+    box-shadow: var(--shadow-sm);
+    cursor: pointer;
+}
+
+/* Sidebar Close Button (hidden on desktop) */
+.sidebar-close {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+}
+
+/* Mobile Sidebar Styles */
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -280px;
+        height: 100vh;
+        z-index: 1000;
+        transition: transform 0.3s ease;
+    }
+    
+    .sidebar.mobile-active {
+        transform: translateX(280px);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .mobile-menu-button {
+        display: block;
+    }
+    
+    .sidebar-close {
+        display: block;
+    }
+    
+    /* Prevent scrolling when menu is open */
+    body.menu-open {
+        overflow: hidden;
+    }
+}
