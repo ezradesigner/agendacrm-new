@@ -540,7 +540,6 @@ body {
     cursor: pointer;
     padding: 0.25rem;
 }
-
 /* Mobile Styles */
 @media (max-width: 768px) {
     .sidebar {
@@ -559,7 +558,10 @@ body {
     }
     
     .mobile-menu-button {
-        margin-right: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 0;
     }
     
     .sidebar-close {
@@ -575,14 +577,7 @@ body {
         padding: 0.75rem 1rem;
         display: flex;
         flex-wrap: wrap;
-        gap: 0.5rem;
-        align-items: center;
-    }
-    
-    .top-bar-actions {
-        display: flex;
-        gap: 0.5rem;
-        margin-left: 0; /* Reset any previous margin */
+        gap: 0.75rem;
     }
     
     .search-container {
@@ -591,10 +586,16 @@ body {
         margin-top: 0.5rem;
     }
     
+    .top-bar-actions {
+        display: flex;
+        gap: 0.5rem;
+        margin-left: auto;
+    }
+    
     .mobile-icon-only .desktop-text {
         display: none;
     }
-    /* Adjust button sizes */
+    
     .btn-primary.mobile-icon-only {
         padding: 0.5rem;
     }
