@@ -16,11 +16,6 @@
 
 </head>
 <body class="bg-gray-50">
-    <!-- Mobile Hamburger Button -->
-    <button class="mobile-menu-button">
-        <i data-lucide="menu"></i>
-    </button>
-
     <div class="app-container">
         <!-- Sidebar -->
         <aside class="sidebar">
@@ -86,6 +81,9 @@
             <!-- Top Bar -->
             <div class="top-bar">
                 <div class="search-container">
+                    <button class="mobile-menu-button">
+                        <i data-lucide="menu"></i>
+                    </button>
                     <form action="https://app.agendacrm.com.br/contacts" method="GET">
                         <div class="search-input">
                             <i data-lucide="search" class="icon"></i>
@@ -95,9 +93,9 @@
                 </div>
                 
                 <div class="top-bar-actions">
-                    <button class="btn-primary">
+                    <button class="btn-primary mobile-icon-only">
                         <i data-lucide="user-plus" class="icon"></i>
-                        Novo Contato
+                        <span class="desktop-text">Novo Contato</span>
                     </button>
                     <button class="btn-notification">
                         <i data-lucide="bell" class="icon"></i>
@@ -110,8 +108,7 @@
             <div class="content-area">
                 <!-- Welcome Message -->
                 <div class="welcome-message">
-                    <h1>Bem-vindo de volta, Girlan!</h1>
-                    <p>Veja o que aconteceu desde sua última visita.</p>
+                    <h1>Bom dia, Girlan!</h1>
                 </div>
                 
                 <!-- Main Content Grid -->
