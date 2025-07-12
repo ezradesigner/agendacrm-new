@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="BTlpNnahPasKg7FtL04eEDs4UL49issmZIdY4Kww">
+    <title>Dashboard | AgendaCRM</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/app.css">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lucide/1.0.0/lucide.min.css">
+</head>
+<body class="bg-gray-50">
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="https://app.agendacrm.com.br/img/logo.png" alt="AgendaCRM" class="logo">
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <a href="https://app.agendacrm.com.br" class="nav-item active">
+                        <i class="icon" data-lucide="layout-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="https://app.agendacrm.com.br/contacts/create" class="nav-item">
+                        <i class="icon" data-lucide="user-plus"></i>
+                        <span>Novo Contato</span>
+                    </a>
+                    <a href="https://app.agendacrm.com.br/contacts" class="nav-item">
+                        <i class="icon" data-lucide="users"></i>
+                        <span>Contatos</span>
+                    </a>
+                    <a href="https://app.agendacrm.com.br/eventos" class="nav-item">
+                        <i class="icon" data-lucide="calendar"></i>
+                        <span>Agenda</span>
+                    </a>
+                </div>
+                
+                <div class="nav-section">
+                    <a href="https://app.agendacrm.com.br/funil-de-vendas" class="nav-item">
+                        <i class="icon" data-lucide="bar-chart-2"></i>
+                        <span>Negociações</span>
+                    </a>
+                    <a href="https://app.agendacrm.com.br/relatorios" class="nav-item">
+                        <i class="icon" data-lucide="pie-chart"></i>
+                        <span>Relatórios</span>
+                    </a>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-group">
+                        <div class="nav-group-header">
+                            <i class="icon" data-lucide="settings"></i>
+                            <span>Cadastros</span>
+                            <i class="icon" data-lucide="chevron-down"></i>
+                        </div>
+                        <div class="nav-group-items">
+                            <a href="https://app.agendacrm.com.br/contact-origins" class="nav-item">
+                                <span>Origens do Contato</span>
+                            </a>
+                            <a href="https://app.agendacrm.com.br/deals-loss-reasons" class="nav-item">
+                                <span>Motivos de Perda</span>
+                            </a>
+                            <a href="https://app.agendacrm.com.br/tags" class="nav-item">
+                                <span>Cadastro de TAGs</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            
+            <!-- User Menu moved to bottom -->
+            <div class="user-menu-bottom">
+                <div class="user-avatar">GO</div>
+                <div class="user-info">
+                    <span class="user-name">Girlan Outdoor</span>
+                    <span class="user-email">admin@example.com</span>
+                </div>
+                <i class="icon" data-lucide="chevron-down"></i>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Top Bar -->
+            <div class="top-bar">
+                <div class="search-container">
+                    <form action="https://app.agendacrm.com.br/contacts" method="GET">
+                        <div class="search-input">
+                            <i class="icon" data-lucide="search"></i>
+                            <input type="search" name="q" placeholder="Pesquisar contatos...">
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="top-bar-actions">
+                    <button class="btn-notification">
+                        <i class="icon" data-lucide="bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                    <button class="btn-primary">
+                        <i class="icon" data-lucide="user-plus"></i>
+                        Novo Contato
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- Welcome Message -->
+                <div class="welcome-message">
+                    <h1>Bem-vindo de volta, Girlan!</h1>
+                    <p>Veja o que aconteceu desde sua última visita.</p>
+                </div>
+                
+                <!-- Main Content Grid -->
+                <div class="content-grid">
+                    <!-- Left Column -->
+                    <div class="content-column-left">
+                        <!-- Today's Agenda -->
+                        <div class="content-card">
+                            <div class="card-header">
+                                <h2>Agendamentos do Dia</h2>
+                                <button class="btn-primary btn-sm">
+                                    <i class="icon" data-lucide="plus"></i> Novo
+                                </button>
+                            </div>
+                            <div class="card-body">
+                                <div class="empty-state">
+                                    <i class="icon" data-lucide="check-circle"></i>
+                                    <p>Você não tem agendamentos pendentes.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Late Appointments -->
+                        <div class="content-card">
+                            <div class="card-header">
+                                <h2>Agendamentos em Atraso</h2>
+                            </div>
+                            <div class="card-body">
+                                <div class="appointment-list">
+                                    <!-- Appointment Item -->
+                                    <div class="appointment-item">
+                                        <div class="appointment-date">
+                                            <span class="month">Jul</span>
+                                            <span class="day">09</span>
+                                        </div>
+                                        <div class="appointment-details">
+                                            <div class="appointment-meta">
+                                                <span class="salesperson">wadson</span>
+                                            </div>
+                                            <h4>Brunna</h4>
+                                            <p>Aliare Siagri Sistemas de Gestão</p>
+                                        </div>
+                                        <button class="btn-primary btn-sm">
+                                            <i class="icon" data-lucide="check"></i> Registrar
+                                        </button>
+                                    </div>
+                                    
+                                    <!-- More appointment items would go here -->
+                                </div>
+                                
+                                <div class="pagination">
+                                    <button class="btn-outline" disabled>
+                                        <i class="icon" data-lucide="chevron-left"></i> Anterior
+                                    </button>
+                                    <span>Página 1 de 2</span>
+                                    <button class="btn-outline">
+                                        Próxima <i class="icon" data-lucide="chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Column -->
+                    <div class="content-column-right">
+                        <!-- Stats Card -->
+                        <div class="content-card stats-card">
+                            <div class="stats-grid">
+                                <!-- Contatos -->
+                                <div class="stat-item">
+                                    <div class="stat-icon bg-indigo-100">
+                                        <i class="icon text-indigo-600" data-lucide="users"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <h3>297</h3>
+                                        <p>Contatos</p>
+                                        <span class="stat-meta">1 novo este mês</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Agendamentos -->
+                                <div class="stat-item">
+                                    <div class="stat-icon bg-amber-100">
+                                        <i class="icon text-amber-600" data-lucide="calendar"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <h3>182</h3>
+                                        <p>Agendamentos</p>
+                                        <span class="stat-meta">30.2% realizado</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Vendas Fechadas -->
+                                <div class="stat-item">
+                                    <div class="stat-icon bg-blue-100">
+                                        <i class="icon text-blue-600" data-lucide="thumbs-up"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <h3>5 <span class="text-red-500">-77.3%</span></h3>
+                                        <p>Vendas Fechadas</p>
+                                        <span class="stat-meta">22 mês anterior</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Faturamento -->
+                                <div class="stat-item">
+                                    <div class="stat-icon bg-green-100">
+                                        <i class="icon text-green-600" data-lucide="dollar-sign"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <h3>R$ 34.000,00 <span class="text-red-500">-78.8%</span></h3>
+                                        <p>Faturamento</p>
+                                        <span class="stat-meta">R$ 160.410,00 mês anterior</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/1.0.0/lucide.min.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+    <script src="/js/app.js"></script>
+</body>
+</html>
