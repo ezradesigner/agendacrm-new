@@ -73,9 +73,16 @@ body {
 .top-bar {
     padding: 1rem 2rem;
     display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1.5rem;
     background-color: transparent;
+}
+
+.desktop-search {
+    flex-grow: 1;
+    max-width: 500px;
+    margin-right: auto;
 }
 
 .content-area {
@@ -581,40 +588,23 @@ body {
         gap: 0.5rem;
     }
     
-    .mobile-header-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-    }
-    
-    .mobile-menu-button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        border: none;
-        background: none;
-        cursor: pointer;
+    .desktop-search {
+        max-width: 100%;
+        margin-right: 0;
+        order: 2;
     }
     
     .top-bar-actions {
-        display: flex;
-        gap: 0.5rem;
-        margin-left: 0;
-    }
-    
-    .search-container {
+        order: 1;
         width: 100%;
-        margin-top: 0;
+        justify-content: space-between;
     }
     
     .mobile-icon-only .desktop-text {
         display: none;
     }
     
-    .btn-primary.mobile-icon-only {
+    .btn-primary {
         padding: 0.5rem;
     }
     
