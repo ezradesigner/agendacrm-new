@@ -528,7 +528,7 @@ body {
     cursor: pointer;
     background: transparent !important;
     box-shadow: none !important;
-    margin-right: auto;
+    margin-right: 0.5rem;
     position: static;
 }
 
@@ -559,7 +559,7 @@ body {
     }
     
     .mobile-menu-button {
-        display: block;
+        margin-right: auto;
     }
     
     .sidebar-close {
