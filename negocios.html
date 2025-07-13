@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Negociações | AgendaCRM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/app.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-gray-50">
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="https://app.agendacrm.com.br/img/logo.png" alt="AgendaCRM" class="logo">
+                <button class="sidebar-close">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <a href="index.html" class="nav-item active">
+                        <i data-lucide="layout-dashboard" class="icon"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="novo_contato.html" class="nav-item">
+                        <i data-lucide="user-plus" class="icon"></i>
+                        <span>Novo Contato</span>
+                    </a>
+                </div>
+                <div class="nav-section">
+                    <a href="contatos.html" class="nav-item">
+                        <i data-lucide="users" class="icon"></i>
+                        <span>Contatos</span>
+                    </a>
+                    <a href="agenda.html" class="nav-item">
+                        <i data-lucide="calendar" class="icon"></i>
+                        <span>Agenda</span>
+                    </a>
+                    <a href="negocios.html" class="nav-item">
+                        <i data-lucide="bar-chart-2" class="icon"></i>
+                        <span>Negociações</span>
+                    </a>
+                    <a href="relatorios.html" class="nav-item">
+                        <i data-lucide="pie-chart" class="icon"></i>
+                        <span>Relatórios</span>
+                    </a>
+                </div>
+            </nav>
+            
+            <!-- Footer Section -->
+            <div class="sidebar-footer">
+                <div class="nav-section">
+                    <a href="#" class="nav-item">
+                        <i data-lucide="settings" class="icon"></i>
+                        <span>Configurações</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="trash-2" class="icon"></i>
+                        <span>Lixeira</span>
+                    </a>
+                </div>
+            </div>
+        </aside>
+        
+        <div class="main-content">
+            <div class="top-bar">
+
+                <button class="mobile-menu-button">
+                    <i data-lucide="menu"></i>
+                </button>
+
+                <div class="search-container desktop-search">
+                    <form action="https://app.agendacrm.com.br/contacts" method="GET">
+                        <div class="search-input">
+                            <i data-lucide="search" class="icon"></i>
+                            <input type="search" name="q" placeholder="Pesquisar contatos...">
+                        </div>
+                    </form>
+                </div>
+
+                <div class="user-menu-top">
+                    <div class="user-avatar">GO</div>
+                    <span class="user-name desktop-only">Girlan Outdoor</span>
+                </div>
+
+                <div class="user-dropdown">
+                    <div class="dropdown-header">
+                        <div class="team-name">Girlan Outdoor</div>
+                        <div class="team-plan">Plano básico - 8 membros</div>
+                    </div>
+                    <div class="dropdown-actions">
+                        <button class="dropdown-btn">
+                            <i data-lucide="settings"></i> Configurações
+                        </button>
+                        <button class="dropdown-btn">
+                            <i data-lucide="user-round-cog"></i> Convidar
+                        </button>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-email">girlan@girlan.com.br</div>
+                    <div class="dropdown-teams">
+                        <div class="team-item">
+                            <i data-lucide="users"></i> Controle do Sistema
+                        </div>
+                        <div class="team-item active">
+                            <i data-lucide="users"></i> Girlan Outdoor
+                        </div>
+                        <div class="team-item">
+                            <i data-lucide="users"></i> Maybu Solar
+                        </div>
+                        <div class="team-item add-team">
+                            <i data-lucide="plus"></i> Nova Equipe
+                        </div>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-footer">
+                        <button class="dropdown-btn">
+                            Adicionar outra conta
+                        </button>
+                        <button class="dropdown-btn">
+                            <i data-lucide="log-out"></i> Sair
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-area">
+                <div class="page-header">
+                    <h1>Negociações</h1>
+                    <div class="page-actions">
+                        <button class="btn-primary">
+                            <i data-lucide="plus"></i> Nova Negociação
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="pipeline-container">
+                    <div class="pipeline-stage">
+                        <div class="stage-header">
+                            <h3>Contato Inicial</h3>
+                            <span class="stage-count">12</span>
+                        </div>
+                        <div class="deal-card">
+                            <div class="deal-title">Aliare Siagri</div>
+                            <div class="deal-value">R$ 45.000,00</div>
+                            <div class="deal-contact">Brunna Silva</div>
+                            <div class="deal-actions">
+                                <button class="btn-outline btn-sm">
+                                    <i data-lucide="calendar"></i> Agendar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pipeline-stage">
+                        <div class="stage-header">
+                            <h3>Reunião Realizada</h3>
+                            <span class="stage-count">8</span>
+                        </div>
+                        <div class="deal-card">
+                            <div class="deal-title">Maybu Solar</div>
+                            <div class="deal-value">R$ 28.000,00</div>
+                            <div class="deal-contact">Carlos Mendes</div>
+                            <div class="deal-actions">
+                                <button class="btn-outline btn-sm">
+                                    <i data-lucide="file-text"></i> Proposta
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pipeline-stage">
+                        <div class="stage-header">
+                            <h3>Proposta Enviada</h3>
+                            <span class="stage-count">5</span>
+                        </div>
+                        <div class="deal-card highlight">
+                            <div class="deal-title">Ventura Energia</div>
+                            <div class="deal-value">R$ 62.000,00</div>
+                            <div class="deal-contact">Ana Ventura</div>
+                            <div class="deal-actions">
+                                <button class="btn-primary btn-sm">
+                                    <i data-lucide="check"></i> Seguir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pipeline-stage">
+                        <div class="stage-header">
+                            <h3>Negociação</h3>
+                            <span class="stage-count">3</span>
+                        </div>
+                    </div>
+                    
+                    <div class="pipeline-stage">
+                        <div class="stage-header">
+                            <h3>Fechado</h3>
+                            <span class="stage-count">2</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/1.0.0/lucide.min.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        lucide.createIcons();
+    </script> 
+</body>
+</html>
