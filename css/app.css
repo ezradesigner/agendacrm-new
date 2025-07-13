@@ -468,6 +468,10 @@ body {
     box-shadow: none !important;
     margin-right: 0.5rem;
     position: static;
+    z-index: 1001; /* Higher than sidebar's z-index */
+    position: relative; /* Needed for z-index to work */
+    background-color: white !important; /* Make it visible */
+    border: 1px solid var(--color-border) !important; /* Add border */
 }
 
 /* Sidebar Close Button */
@@ -499,6 +503,7 @@ body {
     .mobile-menu-button {
         display: flex;
         order: 1;
+        margin-right: auto;
     }
     
     .sidebar-close {
