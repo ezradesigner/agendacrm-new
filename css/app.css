@@ -462,6 +462,7 @@ body {
     display: none;
     background: transparent !important;
     border: none;
+    cursor: pointer;
     margin-right: 0.5rem;
     position: relative;
 }
