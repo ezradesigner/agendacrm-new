@@ -35,4 +35,61 @@ $(document).ready(function() {
             $body.removeClass('menu-open');
         }
     });
+    // Number counting animation
+    function animateNumbers() {
+        $('.stat-content h3').each(function() {
+            const $this = $(this);
+            const originalText = $this.text();
+            
+            // Extract numbers from the text (including commas and decimal points)
+            const matches = originalText.match(/(\d[\d,.]*)/g);
+            
+            if (matches) {
+                let finalText = originalText;
+                
+                // Replace each number with a span for animation
+                matches.forEach(match => {
+                    // Remove any formatting for calculation
+                    const cleanNumber = parseFloat(match.replace(/[^\d.]/g, ''));
+                    if (!isNaN(cleanNumber)) {
+                        finalText = finalText.replace(match, `<span class="counting-number" data-value="${cleanNumber}">0</span>`);
+                    }
+                });
+                
+                $this.html(finalText);
+            }
+        });
+
+        // Animate each counting number
+        $('.counting-number').each(function() {
+            const $this = $(this);
+            const target = parseFloat($this.data('value'));
+            const duration = 1500; // 1.5 seconds
+            
+            $({ count: 0 }).animate({ count: target }, {
+                duration: duration,
+                easing: 'swing',
+                step: function() {
+                    // Format number with commas and decimal places
+                    let value = Math.floor(this.count);
+                    if (target % 1 !== 0) { // If it's a decimal number
+                        value = this.count.toFixed(2);
+                    }
+                    $this.text(value.toLocaleString('pt-BR'));
+                },
+                complete: function() {
+                    // Ensure final value is exact
+                    if (target % 1 !== 0) {
+                        $this.text(target.toFixed(2).toLocaleString('pt-BR');
+                    } else {
+                        $this.text(target.toLocaleString('pt-BR'));
+                    }
+                }
+            });
+        });
+    }
+
+    // Start animation when page loads
+    animateNumbers();
+});
 });
