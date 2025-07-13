@@ -297,7 +297,12 @@ body {
     font-size: 0.75rem;
     color: var(--color-text-lighter);
 }
-
+.counting-number {
+    display: inline-block;
+    min-width: 1em;
+    text-align: right;
+    transition: all 0.3s ease-out;
+}
 /* Appointment List */
 .appointment-list {
     display: flex;
