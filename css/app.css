@@ -719,6 +719,7 @@ body {
     display: flex;
     align-items: center;
     padding: 0 0.5rem;
+    font-size: 0.875rem;
 }
 
 .contact-name {
