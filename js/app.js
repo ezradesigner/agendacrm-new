@@ -21,68 +21,6 @@ $(document).ready(function() {
     // Update greeting every minute in case page stays open
     setInterval(updateGreeting, 60000);
 
-    // Number counting animation
-    function animateNumbers() {
-        $('.stat-content h3').each(function() {
-            const $h3 = $(this);
-            const originalText = $h3.text().trim();
-            
-            // Extract just the numeric value (including commas and decimal points)
-            const numberMatch = originalText.match(/[\d,\.]+/);
-            
-            if (numberMatch) {
-                const numberString = numberMatch[0];
-                // Remove formatting for calculation
-                const cleanNumber = parseFloat(numberString.replace(/[^\d.]/g, ''));
-                
-                if (!isNaN(cleanNumber)) {
-                    // Replace just the number part, preserving any other text
-                    const newText = originalText.replace(
-                        numberString, 
-                        `<span class="counting-number" data-value="${cleanNumber}">0</span>`
-                    );
-                    $h3.html(newText);
-                }
-            }
-        });
-
-        // Animate each counting number
-        $('.counting-number').each(function() {
-            const $this = $(this);
-            const target = parseFloat($this.data('value'));
-            const duration = 1500;
-            
-            $({ count: 0 }).animate({ count: target }, {
-                duration: duration,
-                easing: 'swing',
-                step: function() {
-                    // Format number with Brazilian locale
-                    const currentValue = this.count;
-                    let displayValue;
-                    
-                    if (Number.isInteger(target)) {
-                        displayValue = Math.floor(currentValue);
-                    } else {
-                        displayValue = currentValue.toFixed(2);
-                    }
-                    
-                    $this.text(displayValue.toLocaleString('pt-BR'));
-                },
-                complete: function() {
-                    // Ensure final value is exact
-                    if (Number.isInteger(target)) {
-                        $this.text(target.toLocaleString('pt-BR'));
-                    } else {
-                        $this.text(target.toFixed(2).toLocaleString('pt-BR'));
-                    }
-                }
-            });
-        });
-    }
-
-    // Start animation when page loads
-    animateNumbers();
-
     // Mobile menu functionality
     const $mobileMenuButton = $('.mobile-menu-button');
     const $sidebar = $('.sidebar');
