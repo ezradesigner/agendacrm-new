@@ -342,10 +342,6 @@ body {
     grid-template-columns: 2fr 1fr;
     gap: 1.5rem;
 }
-.content-single {
-    display: flex;
-    gap: 1.5rem;
-}
 
 .content-column-left {
     display: flex;
