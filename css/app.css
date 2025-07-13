@@ -464,7 +464,9 @@ body {
     border: none;
     cursor: pointer;
     margin-right: 0.5rem;
+    padding: 0.5rem;
     position: relative;
+    z-index: 100;
 }
 
 /* Sidebar Close Button */
@@ -484,13 +486,13 @@ body {
         left: -100%;
         width: 280px;
         height: 100vh;
-        z-index: 1001;
         transition: left 0.3s ease;
     }
     
     .sidebar.mobile-active {
         left: 0;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        z-index: 1001;
     }
     
     .mobile-menu-button {
