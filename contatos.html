@@ -137,14 +137,14 @@
                 <div class="content-card">
                     <div class="card-header">
                         <div class="filter-controls">
-                            <select class="filter-select desktop-only">
+                            <select class="filter-select desktop-only white-bg">
                                 <option>Todos os Contatos (297)</option>
                                 <option>Sem Reunião Agendada (182)</option>
                                 <option>Reunião Hoje (5)</option>
                                 <option>Reunião Esta Semana (12)</option>
                             </select>
                             
-                            <select class="filter-select desktop-only">
+                            <select class="filter-select desktop-only white-bg">
                                 <option>Todos os Estágios</option>
                                 <option>Novo</option>
                                 <option>Contatado</option>
@@ -157,7 +157,7 @@
                                 <i data-lucide="list-filter"></i>
                             </button>
                             
-                            <button class="btn-primary new-contact-btn">
+                            <button class="btn-primary new-contact-btn ml-auto">
                                 <i data-lucide="user-plus" class="mobile-only"></i>
                                 <span class="desktop-only">Novo Contato</span>                                
                             </button>
@@ -185,19 +185,18 @@
                                         <div class="contact-name">Brunna Silva</div>
                                         <div class="contact-mobile-actions mobile-only">
                                             <button class="icon-btn">
-                                                <i data-lucide="phone"></i>
-                                            </button>
-                                            <button class="icon-btn">
                                                 <i data-lucide="calendar-plus"></i>
                                             </button>
                                             <button class="icon-btn">
-                                                <i data-lucide="more-vertical"></i>
+                                                <i data-lucide="ellipsis"></i>
                                             </button>
                                         </div>
                                     </div>
-                                    <div class="table-col">Aliare Siagri</div>
-                                    <div class="table-col">(11) 98765-4321</div>
-                                    <div class="table-col">2 dias atrás</div>
+                                    <div class="table-col desktop-only">Aliare Siagri</div>
+                                    <div class="table-col">
+                                        <a href="https://wa.me/5511987654321" class="text-indigo-600">(11) 98765-4321</a>
+                                    </div>
+                                    <div class="table-col desktop-only">2 dias atrás</div>
                                     <div class="table-col">
                                         <div class="next-action">Ligar amanhã</div>
                                     </div>
@@ -206,9 +205,6 @@
                                     </div>
                                     <div class="table-col desktop-only">
                                         <div class="action-buttons">
-                                            <button class="icon-btn">
-                                                <i data-lucide="phone"></i>
-                                            </button>
                                             <button class="icon-btn">
                                                 <i data-lucide="calendar-plus"></i>
                                             </button>
@@ -219,25 +215,34 @@
                                     </div>
                                 </div>
                                 
+                                <!-- Mobile-only content -->
+                                <div class="mobile-only">
+                                    <div class="table-col text-sm text-gray-500 mt-1">Aliare Siagri</div>
+                                    <div class="table-col mt-1">
+                                        <a href="https://wa.me/5511987654321" class="text-indigo-600">(11) 98765-4321</a>
+                                    </div>
+                                    <div class="table-col text-sm mt-1">Último contato: 2 dias atrás</div>
+                                    <div class="table-col text-sm mt-1">Próxima ação: Ligar amanhã</div>
+                                </div>
+                                
                                 <!-- Contact Item 2 -->
                                 <div class="table-row">
                                     <div class="table-col">
                                         <div class="contact-name">Carlos Mendes</div>
                                         <div class="contact-mobile-actions mobile-only">
                                             <button class="icon-btn">
-                                                <i data-lucide="phone"></i>
-                                            </button>
-                                            <button class="icon-btn">
                                                 <i data-lucide="calendar-plus"></i>
                                             </button>
                                             <button class="icon-btn">
-                                                <i data-lucide="more-vertical"></i>
+                                                <i data-lucide="ellipsis"></i>
                                             </button>
                                         </div>
                                     </div>
-                                    <div class="table-col">Maybu Solar</div>
-                                    <div class="table-col">(21) 99876-5432</div>
-                                    <div class="table-col">1 semana atrás</div>
+                                    <div class="table-col desktop-only">Maybu Solar</div>
+                                    <div class="table-col">
+                                        <a href="https://wa.me/5521998765432" class="text-indigo-600">(21) 99876-5432</a>
+                                    </div>
+                                    <div class="table-col desktop-only">1 semana atrás</div>
                                     <div class="table-col">
                                         <div class="next-action urgent">Reunião hoje 15:00</div>
                                     </div>
@@ -247,9 +252,6 @@
                                     <div class="table-col desktop-only">
                                         <div class="action-buttons">
                                             <button class="icon-btn">
-                                                <i data-lucide="phone"></i>
-                                            </button>
-                                            <button class="icon-btn">
                                                 <i data-lucide="calendar-plus"></i>
                                             </button>
                                             <button class="icon-btn">
@@ -257,6 +259,16 @@
                                             </button>
                                         </div>
                                     </div>
+                                </div>
+                                
+                                <!-- Mobile-only content -->
+                                <div class="mobile-only">
+                                    <div class="table-col text-sm text-gray-500 mt-1">Maybu Solar</div>
+                                    <div class="table-col mt-1">
+                                        <a href="https://wa.me/5521998765432" class="text-indigo-600">(21) 99876-5432</a>
+                                    </div>
+                                    <div class="table-col text-sm mt-1">Último contato: 1 semana atrás</div>
+                                    <div class="table-col text-sm mt-1 urgent">Próxima ação: Reunião hoje 15:00</div>
                                 </div>
                             </div>
                         </div>
