@@ -460,15 +460,9 @@ body {
 /* Mobile Menu Button */
 .mobile-menu-button {
     display: none;
-    border: none;
-    border-radius: var(--rounded);
     padding: 0.5rem;
-    cursor: pointer;
     background: transparent !important;
-    box-shadow: none !important;
     margin-right: 0.5rem;
-    position: static;
-    z-index: 1001;
     position: relative;
 }
 
