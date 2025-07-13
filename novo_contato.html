@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Novo Contato | AgendaCRM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/app.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-gray-50">
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="https://app.agendacrm.com.br/img/logo.png" alt="AgendaCRM" class="logo">
+                <button class="sidebar-close">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <a href="https://app.agendacrm.com.br" class="nav-item active">
+                        <i data-lucide="layout-dashboard" class="icon"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="novo_contato.html" class="nav-item">
+                        <i data-lucide="user-plus" class="icon"></i>
+                        <span>Novo Contato</span>
+                    </a>
+                </div>
+                <div class="nav-section">
+                    <a href="https://app.agendacrm.com.br/contacts" class="nav-item">
+                        <i data-lucide="users" class="icon"></i>
+                        <span>Contatos</span>
+                    </a>
+                    <a href="https://app.agendacrm.com.br/eventos" class="nav-item">
+                        <i data-lucide="calendar" class="icon"></i>
+                        <span>Agenda</span>
+                    </a>
+                    <a href="https://app.agendacrm.com.br/funil-de-vendas" class="nav-item">
+                        <i data-lucide="bar-chart-2" class="icon"></i>
+                        <span>Negociações</span>
+                    </a>
+                    <a href="https://app.agendacrm.com.br/relatorios" class="nav-item">
+                        <i data-lucide="pie-chart" class="icon"></i>
+                        <span>Relatórios</span>
+                    </a>
+                </div>
+            </nav>
+            
+            <!-- Footer Section -->
+            <div class="sidebar-footer">
+                <div class="nav-section">
+                    <a href="#" class="nav-item">
+                        <i data-lucide="settings" class="icon"></i>
+                        <span>Configurações</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="trash-2" class="icon"></i>
+                        <span>Lixeira</span>
+                    </a>
+                </div>
+            </div>
+        </aside>
+        
+        <div class="main-content">
+            <div class="top-bar">
+
+                <button class="mobile-menu-button">
+                    <i data-lucide="menu"></i>
+                </button>
+
+                <div class="search-container desktop-search">
+                    <form action="https://app.agendacrm.com.br/contacts" method="GET">
+                        <div class="search-input">
+                            <i data-lucide="search" class="icon"></i>
+                            <input type="search" name="q" placeholder="Pesquisar contatos...">
+                        </div>
+                    </form>
+                </div>
+
+                <div class="user-menu-top">
+                    <div class="user-avatar">GO</div>
+                    <span class="user-name desktop-only">Girlan Outdoor</span>
+                </div>
+
+                <div class="user-dropdown">
+                    <div class="dropdown-header">
+                        <div class="team-name">Girlan Outdoor</div>
+                        <div class="team-plan">Plano básico - 8 membros</div>
+                    </div>
+                    <div class="dropdown-actions">
+                        <button class="dropdown-btn">
+                            <i data-lucide="settings"></i> Configurações
+                        </button>
+                        <button class="dropdown-btn">
+                            <i data-lucide="user-round-cog"></i> Convidar
+                        </button>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-email">girlan@girlan.com.br</div>
+                    <div class="dropdown-teams">
+                        <div class="team-item">
+                            <i data-lucide="users"></i> Controle do Sistema
+                        </div>
+                        <div class="team-item active">
+                            <i data-lucide="users"></i> Girlan Outdoor
+                        </div>
+                        <div class="team-item">
+                            <i data-lucide="users"></i> Maybu Solar
+                        </div>
+                        <div class="team-item add-team">
+                            <i data-lucide="plus"></i> Nova Equipe
+                        </div>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-footer">
+                        <button class="dropdown-btn">
+                            Adicionar outra conta
+                        </button>
+                        <button class="dropdown-btn">
+                            <i data-lucide="log-out"></i> Sair
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-area">
+                <div class="page-header">
+                    <h1>Novo Contato</h1>
+                    <div class="page-actions">
+                        <button class="btn-outline">
+                            <i data-lucide="x"></i> Cancelar
+                        </button>
+                        <button class="btn-primary">
+                            <i data-lucide="check"></i> Salvar Contato
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="content-card">
+                    <div class="card-body">
+                        <div class="form-grid">
+                            <div class="form-section">
+                                <h3>Informações Básicas</h3>
+                                <div class="form-group">
+                                    <label>Nome Completo*</label>
+                                    <input type="text" placeholder="Nome do contato">
+                                </div>
+                                <div class="form-group">
+                                    <label>Empresa</label>
+                                    <input type="text" placeholder="Nome da empresa">
+                                </div>
+                                <div class="form-group">
+                                    <label>Cargo</label>
+                                    <input type="text" placeholder="Cargo do contato">
+                                </div>
+                            </div>
+                            
+                            <div class="form-section">
+                                <h3>Contato</h3>
+                                <div class="form-group">
+                                    <label>Telefone*</label>
+                                    <input type="tel" placeholder="(00) 00000-0000">
+                                </div>
+                                <div class="form-group">
+                                    <label>E-mail</label>
+                                    <input type="email" placeholder="contato@empresa.com">
+                                </div>
+                                <div class="form-group">
+                                    <label>LinkedIn</label>
+                                    <input type="url" placeholder="linkedin.com/in/usuario">
+                                </div>
+                            </div>
+                            
+                            <div class="form-section">
+                                <h3>Informações Adicionais</h3>
+                                <div class="form-group">
+                                    <label>Origem</label>
+                                    <select>
+                                        <option>Indicação</option>
+                                        <option>LinkedIn</option>
+                                        <option>Evento</option>
+                                        <option>Site</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Estágio do Contato</label>
+                                    <select>
+                                        <option>Novo</option>
+                                        <option>Contatado</option>
+                                        <option>Reunião Agendada</option>
+                                        <option>Proposta Enviada</option>
+                                        <option>Negociação</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Agendar Reunião</label>
+                                    <button class="btn-outline full-width">
+                                        <i data-lucide="calendar-plus"></i> Agendar Agora
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Same scripts as dashboard -->
+</body>
+</html>
