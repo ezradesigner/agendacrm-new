@@ -49,17 +49,17 @@ body {
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
-    position: relative;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
+    z-index: 1000;
+    overflow-y: auto;
 }
 
-.sidebar-header {
-    padding: 1.5rem;
-    border-bottom: 1px solid var(--color-border);
-}
-
-.logo {
-    height: 40px;
-    width: auto;
+.sidebar-footer {
+    margin-top: auto;
+    padding-bottom: 1rem;
 }
 
 .main-content {
@@ -67,6 +67,7 @@ body {
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    margin-left: 280px;
 }
 
 /* Top Bar */
@@ -297,12 +298,15 @@ body {
     font-size: 0.75rem;
     color: var(--color-text-lighter);
 }
+
+/* Number Animation */
 .counting-number {
     display: inline-block;
     min-width: 1em;
     text-align: right;
     transition: all 0.3s ease-out;
 }
+
 /* Appointment List */
 .appointment-list {
     display: flex;
@@ -465,13 +469,16 @@ body {
 /* Mobile Menu Button */
 .mobile-menu-button {
     display: none;
-    background: transparent !important;
     border: none;
-    cursor: pointer;
-    margin-right: 0.5rem;
+    border-radius: var(--rounded);
     padding: 0.5rem;
+    cursor: pointer;
+    background: white !important;
+    box-shadow: var(--shadow-sm) !important;
+    margin-right: 0.5rem;
     position: relative;
     z-index: 100;
+    border: 1px solid var(--color-border) !important;
 }
 
 /* Sidebar Close Button */
@@ -479,8 +486,8 @@ body {
     display: none;
     background: none;
     border: none;
+    cursor: pointer;
     padding: 0.25rem;
-    margin-right: 0.5rem;
 }
 
 /* Mobile Styles */
@@ -491,19 +498,22 @@ body {
         left: -100%;
         width: 280px;
         height: 100vh;
+        z-index: 1000;
         transition: left 0.3s ease;
     }
     
     .sidebar.mobile-active {
         left: 0;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-        z-index: 1001;
+    }
+    
+    .main-content {
+        margin-left: 0;
     }
     
     .mobile-menu-button {
         display: flex;
         order: 1;
-        margin-right: auto;
     }
     
     .sidebar-close {
@@ -536,11 +546,6 @@ body {
         display: none;
     }
     
-    /* Remove user menu from sidebar bottom */
-    .user-menu-bottom {
-        display: none;
-    }
-    
     /* Single column layout */
     .content-grid {
         grid-template-columns: 1fr !important;
@@ -549,9 +554,5 @@ body {
     /* Single column for stats */
     .stats-grid {
         grid-template-columns: 1fr !important;
-    }
-
-    .btn-primary.btn-sm {
-    padding: 0.4rem;
     }
 }
