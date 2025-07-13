@@ -42,7 +42,7 @@ $('.dropdown-btn, .team-item').on('click', function() {
             greeting = "Boa noite";
         }
         
-        $('.welcome-message h1').text(`${greeting}, Girlan!`);
+        $('.welcome-message h1').text(`${greeting}, Wadson!`);
     }
     
     // Update greeting on page load
