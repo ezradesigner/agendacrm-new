@@ -13,17 +13,16 @@
     <link rel="stylesheet" href="css/app.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-
 </head>
 <body class="bg-gray-50">
     <div class="app-container">
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="sidebar-header">
+                <img src="https://app.agendacrm.com.br/img/logo.png" alt="AgendaCRM" class="logo">
                 <button class="sidebar-close">
                     <i data-lucide="x"></i>
                 </button>
-                <img src="https://app.agendacrm.com.br/img/logo.png" alt="AgendaCRM" class="logo">                
             </div>
             
             <nav class="sidebar-nav">
@@ -36,8 +35,6 @@
                         <i data-lucide="user-plus" class="icon"></i>
                         <span>Novo Contato</span>
                     </a>
-                </div>
-                <div class="nav-section">
                     <a href="https://app.agendacrm.com.br/contacts" class="nav-item">
                         <i data-lucide="users" class="icon"></i>
                         <span>Contatos</span>
@@ -46,6 +43,9 @@
                         <i data-lucide="calendar" class="icon"></i>
                         <span>Agenda</span>
                     </a>
+                </div>
+                
+                <div class="nav-section">
                     <a href="https://app.agendacrm.com.br/funil-de-vendas" class="nav-item">
                         <i data-lucide="bar-chart-2" class="icon"></i>
                         <span>Negociações</span>
@@ -55,7 +55,10 @@
                         <span>Relatórios</span>
                     </a>
                 </div>
-                
+            </nav>
+            
+            <!-- Footer Section -->
+            <div class="sidebar-footer">
                 <div class="nav-section">
                     <a href="#" class="nav-item">
                         <i data-lucide="settings" class="icon"></i>
@@ -66,7 +69,7 @@
                         <span>Lixeira</span>
                     </a>
                 </div>
-            </nav>
+            </div>
         </aside>
 
         <!-- Main Content -->
