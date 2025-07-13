@@ -32,6 +32,10 @@
                         <i data-lucide="layout-dashboard" class="icon"></i>
                         <span>Dashboard</span>
                     </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="user-plus" class="icon"></i>
+                        <span>Novo Contato</span>
+                    </a>
                     <a href="https://app.agendacrm.com.br/contacts" class="nav-item">
                         <i data-lucide="users" class="icon"></i>
                         <span>Contatos</span>
@@ -64,22 +68,16 @@
                     </a>
                 </div>
             </nav>
-            
-            <!-- User Menu moved to bottom -->
-            <div class="user-menu-bottom">
-                <div class="user-avatar">GO</div>
-                <div class="user-info">
-                    <span class="user-name">Girlan Outdoor</span>
-                    <span class="user-email">admin@example.com</span>
-                </div>
-                <i data-lucide="chevron-down" class="icon"></i>
-            </div>
         </aside>
 
         <!-- Main Content -->
         <div class="main-content">
             <!-- Top-bar -->
             <div class="top-bar">
+                <button class="mobile-menu-button">
+                    <i data-lucide="menu"></i>
+                </button>
+                
                 <div class="search-container desktop-search">
                     <form action="https://app.agendacrm.com.br/contacts" method="GET">
                         <div class="search-input">
@@ -89,15 +87,9 @@
                     </form>
                 </div>
                 
-                <div class="top-bar-actions">
-                    <button class="btn-notification">
-                        <i data-lucide="bell" class="icon"></i>
-                        <span class="notification-badge">3</span>
-                    </button>
-                    <button class="btn-primary">
-                        <i data-lucide="user-plus" class="icon"></i>
-                        <span class="desktop-text">Novo Contato</span>
-                    </button>
+                <div class="user-menu-top">
+                    <div class="user-avatar">GO</div>
+                    <span class="user-name desktop-only">Girlan Outdoor</span>
                 </div>
             </div>
             
