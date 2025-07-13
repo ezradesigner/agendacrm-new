@@ -460,8 +460,8 @@ body {
 /* Mobile Menu Button */
 .mobile-menu-button {
     display: none;
-    padding: 0.5rem;
     background: transparent !important;
+    border: none;
     margin-right: 0.5rem;
     position: relative;
 }
@@ -471,8 +471,8 @@ body {
     display: none;
     background: none;
     border: none;
-    cursor: pointer;
     padding: 0.25rem;
+    margin-right: 0.5rem;
 }
 
 /* Mobile Styles */
