@@ -468,7 +468,7 @@ body {
     box-shadow: none !important;
     margin-right: 0.5rem;
     position: static;
-    z-index: 1000;
+    z-index: 1001;
     position: relative;
 }
 
