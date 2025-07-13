@@ -687,7 +687,7 @@ body {
 .filter-controls {
     display: flex;
     gap: 1rem;
-    align-items: center;
+    align-items: flex-end;
     flex-wrap: wrap;
 }
 
