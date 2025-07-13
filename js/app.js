@@ -1,4 +1,34 @@
 $(document).ready(function() {
+
+    // Add this to your existing $(document).ready function
+
+// User dropdown functionality
+const $userMenu = $('.user-menu-top');
+const $userDropdown = $('.user-dropdown');
+
+// Toggle dropdown
+$userMenu.on('click', function(e) {
+    e.stopPropagation();
+    $userDropdown.toggleClass('show');
+    lucide.createIcons();
+});
+
+// Close when clicking outside
+$(document).on('click', function() {
+    $userDropdown.removeClass('show');
+});
+
+// Prevent dropdown from closing when clicking inside it
+$userDropdown.on('click', function(e) {
+    e.stopPropagation();
+});
+
+// Close dropdown when clicking on menu items (optional)
+$('.dropdown-btn, .team-item').on('click', function() {
+    // Add your click handlers here
+    $userDropdown.removeClass('show');
+});
+    
     // Time-based greeting
     function updateGreeting() {
         const hour = new Date().getHours();
