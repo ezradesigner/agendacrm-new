@@ -336,6 +336,12 @@ body {
     margin-bottom: 0.5rem;
 }
 
+.page-header {
+    margin-bottom: 2rem;
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+
 /* Content Grid */
 .content-grid {
     display: grid;
