@@ -343,6 +343,7 @@ body {
     gap: 1.5rem;
 }
 .content-single {
+    display: flex;
     gap: 1.5rem;
 }
 
