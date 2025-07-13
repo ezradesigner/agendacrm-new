@@ -129,125 +129,85 @@
                 </div>
             </div>
             
+          
             <div class="content-area">
-                <div class="page-header">
-                    <h1>Contatos</h1>
-                    <div class="page-actions">
-                        <button class="btn-primary">
-                            <i data-lucide="user-plus"></i> Novo Contato
-                        </button>
-                    </div>
+                <div class="welcome-message">
+                    <h1>Novo Contato</h1>
                 </div>
                 
                 <div class="content-card">
-                    <div class="card-header">
-                        <div class="filter-controls">
-                            <select class="filter-select">
-                                <option>Todos os Contatos (297)</option>
-                                <option>Sem Reunião Agendada (182)</option>
-                                <option>Reunião Hoje (5)</option>
-                                <option>Reunião Esta Semana (12)</option>
-                            </select>
+                    <div class="card-body">
+                        <div class="form-grid">
+                            <div class="form-section">
+                                <h3>Informações Básicas</h3>
+                                <div class="form-group">
+                                    <label>Nome Completo*</label>
+                                    <input type="text" placeholder="Nome do contato">
+                                </div>
+                                <div class="form-group">
+                                    <label>Empresa</label>
+                                    <input type="text" placeholder="Nome da empresa">
+                                </div>
+                                <div class="form-group">
+                                    <label>Cargo</label>
+                                    <input type="text" placeholder="Cargo do contato">
+                                </div>
+                            </div>
                             
-                            <select class="filter-select">
-                                <option>Todos os Estágios</option>
-                                <option>Novo</option>
-                                <option>Contatado</option>
-                                <option>Reunião Agendada</option>
-                                <option>Proposta Enviada</option>
-                                <option>Negociação</option>
-                            </select>
+                            <div class="form-section">
+                                <h3>Contato</h3>
+                                <div class="form-group">
+                                    <label>Telefone*</label>
+                                    <input type="tel" placeholder="(00) 00000-0000">
+                                </div>
+                                <div class="form-group">
+                                    <label>E-mail</label>
+                                    <input type="email" placeholder="contato@empresa.com">
+                                </div>
+                                <div class="form-group">
+                                    <label>LinkedIn</label>
+                                    <input type="url" placeholder="linkedin.com/in/usuario">
+                                </div>
+                            </div>
+                            
+                            <div class="form-section">
+                                <h3>Informações Adicionais</h3>
+                                <div class="form-group">
+                                    <label>Origem</label>
+                                    <select class="white-bg">
+                                        <option>Indicação</option>
+                                        <option>LinkedIn</option>
+                                        <option>Evento</option>
+                                        <option>Site</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Estágio do Contato</label>
+                                    <select class="white-bg">
+                                        <option>Novo</option>
+                                        <option>Contatado</option>
+                                        <option>Reunião Agendada</option>
+                                        <option>Proposta Enviada</option>
+                                        <option>Negociação</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Agendar Reunião</label>
+                                    <button class="btn-outline full-width">
+                                        <i data-lucide="calendar-plus"></i> Agendar Agora
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="card-body">
-                        <div class="contacts-table">
-                            <div class="table-header">
-                                <div class="table-row">
-                                    <div class="table-col">Nome</div>
-                                    <div class="table-col">Empresa</div>
-                                    <div class="table-col">Telefone</div>
-                                    <div class="table-col">Último Contato</div>
-                                    <div class="table-col">Próxima Ação</div>
-                                    <div class="table-col">Estágio</div>
-                                    <div class="table-col">Ações</div>
-                                </div>
-                            </div>
-                            
-                            <div class="table-body">
-                                <!-- Contact Item 1 -->
-                                <div class="table-row">
-                                    <div class="table-col">
-                                        <div class="contact-name">Brunna Silva</div>
-                                        <div class="contact-email">brunna@aliare.com.br</div>
-                                    </div>
-                                    <div class="table-col">Aliare Siagri</div>
-                                    <div class="table-col">(11) 98765-4321</div>
-                                    <div class="table-col">2 dias atrás</div>
-                                    <div class="table-col">
-                                        <div class="next-action">
-                                            <i data-lucide="phone"></i> Ligar amanhã
-                                        </div>
-                                    </div>
-                                    <div class="table-col">
-                                        <span class="status-badge warning">Reunião Agendada</span>
-                                    </div>
-                                    <div class="table-col">
-                                        <div class="action-buttons">
-                                            <button class="icon-btn">
-                                                <i data-lucide="phone"></i>
-                                            </button>
-                                            <button class="icon-btn">
-                                                <i data-lucide="calendar"></i>
-                                            </button>
-                                            <button class="icon-btn">
-                                                <i data-lucide="more-vertical"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Contact Item 2 -->
-                                <div class="table-row">
-                                    <div class="table-col">
-                                        <div class="contact-name">Carlos Mendes</div>
-                                        <div class="contact-email">carlos@maybu.com.br</div>
-                                    </div>
-                                    <div class="table-col">Maybu Solar</div>
-                                    <div class="table-col">(21) 99876-5432</div>
-                                    <div class="table-col">1 semana atrás</div>
-                                    <div class="table-col">
-                                        <div class="next-action urgent">
-                                            <i data-lucide="calendar"></i> Reunião hoje 15:00
-                                        </div>
-                                    </div>
-                                    <div class="table-col">
-                                        <span class="status-badge success">Proposta Enviada</span>
-                                    </div>
-                                    <div class="table-col">
-                                        <div class="action-buttons">
-                                            <button class="icon-btn">
-                                                <i data-lucide="phone"></i>
-                                            </button>
-                                            <button class="icon-btn">
-                                                <i data-lucide="calendar"></i>
-                                            </button>
-                                            <button class="icon-btn">
-                                                <i data-lucide="more-vertical"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="pagination">
-                            <button class="btn-outline" disabled>
-                                <i data-lucide="chevron-left"></i> Anterior
-                            </button>
-                            <span>Página 1 de 12</span>
+                    <div class="card-footer">
+                        <div class="form-actions">
                             <button class="btn-outline">
-                                Próxima <i data-lucide="chevron-right"></i>
+                                <i data-lucide="x"></i> Cancelar
+                            </button>
+                            <button class="btn-primary">
+                                <i data-lucide="check"></i> Salvar Contato
                             </button>
                         </div>
                     </div>
