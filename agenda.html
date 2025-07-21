@@ -1,295 +1,288 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Agenda | AgendaCRM</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/app.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agenda CRM - Contatos</title>
+    <link href="style.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    transitionProperty: {
+                        'transform-opacity': 'transform, opacity',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        #sidebar.open {
+            transform: translateX(0) !important;
+        }
+
+        #mainContent {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #mainContent.shifted {
+            transform: translateX(80vw);
+        }
+
+        #overlay.active {
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+    </style>
 </head>
-<body class="bg-gray-50">
-    <div class="app-container">
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <img src="https://app.agendacrm.com.br/img/logo.png" alt="AgendaCRM" class="logo">
-                <button class="sidebar-close">
-                    <i data-lucide="x"></i>
-                </button>
+
+<body class="bg-white text-gray-800 relative">
+
+    <!-- Overlay -->
+    <div id="overlay"
+        class="fixed inset-0 bg-black bg-opacity-50 z-40 opacity-0 invisible transition-opacity duration-300"></div>
+
+    <!-- Sidebar -->
+    <div id="sidebar"
+        class="fixed top-0 left-0 w-4/5 h-full bg-white shadow-2xl z-50 flex flex-col transform -translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="flex items-center justify-between p-6">
+            <img src="https://app.agendacrm.com.br/img/logo.png" alt="Logo" class="h-10">
+        </div>
+
+        <nav class="flex-1 py-4 flex flex-col">
+            <div class="space-y-1">
+                <a href="contatos.html"
+                    class="flex items-center px-6 py-3 font-medium hover:bg-gray-100 transition-colors">
+                    <i data-lucide="users" class="w-5 h-5 mr-4"></i>
+                    <span>Contatos</span>
+                </a>
+                <a href="agenda.html"
+                    class="flex items-center px-6 py-3 font-medium hover:bg-gray-100 transition-colors">
+                    <i data-lucide="calendar" class="w-5 h-5 mr-4"></i>
+                    <span>Agenda</span>
+                </a>
+                <a href="#" class="flex items-center px-6 py-3 font-medium hover:bg-gray-100 transition-colors">
+                    <i data-lucide="bar-chart-2" class="w-5 h-5 mr-4"></i>
+                    <span>Negociações</span>
+                </a>
+                <a href="#" class="flex items-center px-6 py-3 font-medium hover:bg-gray-100 transition-colors">
+                    <i data-lucide="pie-chart" class="w-5 h-5 mr-4"></i>
+                    <span>Relatórios</span>
+                </a>
             </div>
-            
-            <nav class="sidebar-nav">
-                <div class="nav-section">
-                    <a href="index.html" class="nav-item active">
-                        <i data-lucide="layout-dashboard" class="icon"></i>
-                        <span>Dashboard</span>
-                    </a>
-                    <a href="novo_contato.html" class="nav-item">
-                        <i data-lucide="user-plus" class="icon"></i>
-                        <span>Novo Contato</span>
-                    </a>
-                </div>
-                <div class="nav-section">
-                    <a href="contatos.html" class="nav-item">
-                        <i data-lucide="users" class="icon"></i>
-                        <span>Contatos</span>
-                    </a>
-                    <a href="agenda.html" class="nav-item">
-                        <i data-lucide="calendar" class="icon"></i>
-                        <span>Agenda</span>
-                    </a>
-                    <a href="negocios.html" class="nav-item">
-                        <i data-lucide="bar-chart-2" class="icon"></i>
-                        <span>Negociações</span>
-                    </a>
-                    <a href="relatorios.html" class="nav-item">
-                        <i data-lucide="pie-chart" class="icon"></i>
-                        <span>Relatórios</span>
-                    </a>
-                </div>
-            </nav>
-            
-            <!-- Footer Section -->
-            <div class="sidebar-footer">
-                <div class="nav-section">
-                    <a href="#" class="nav-item">
-                        <i data-lucide="settings" class="icon"></i>
-                        <span>Configurações</span>
-                    </a>
-                    <a href="#" class="nav-item">
-                        <i data-lucide="trash-2" class="icon"></i>
-                        <span>Lixeira</span>
-                    </a>
-                </div>
+
+            <div class="flex-1"></div>
+
+            <div class="border-t border-gray-200 mx-6 pt-6">
+                <a href="#" class="flex items-center py-1 text-gray-600 hover:bg-gray-100 text-sm transition-colors">
+                    <i data-lucide="settings" class="w-4 h-4 mr-4"></i>
+                    <span>Configurações</span>
+                </a>
+                <a href="#" class="flex items-center py-1 text-gray-600 hover:bg-gray-100 text-sm transition-colors">
+                    <i data-lucide="trash" class="w-4 h-4 mr-4"></i>
+                    <span>Lixeira</span>
+                </a>
+                <a href="#" class="flex items-center py-1 text-gray-600 hover:bg-gray-100 text-sm transition-colors">
+                    <i data-lucide="help-circle" class="w-4 h-4 mr-4"></i>
+                    <span>Ajuda e Suporte</span>
+                </a>
             </div>
-        </aside>
-        
-        <div class="main-content">
-            <div class="top-bar">
+        </nav>
 
-                <button class="mobile-menu-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-align-left-icon lucide-align-left"><path d="M15 12H3"/><path d="M17 18H3"/><path d="M21 6H3"/></svg>
-                </button>
-
-                <div class="search-container desktop-search">
-                    <form action="https://app.agendacrm.com.br/contacts" method="GET">
-                        <div class="search-input">
-                            <i data-lucide="search" class="icon"></i>
-                            <input type="search" name="q" placeholder="Pesquisar contatos...">
-                        </div>
-                    </form>
-                </div>
-
-                <div class="user-menu-top">
-                    <div class="user-avatar">GO</div>
-                    <span class="user-name desktop-only">Girlan Outdoor</span>
-                </div>
-
-                <div class="user-dropdown">
-                    <div class="dropdown-header">
-                        <div class="team-name">Girlan Outdoor</div>
-                        <div class="team-plan">Plano básico - 8 membros</div>
-                    </div>
-                    <div class="dropdown-actions">
-                        <button class="dropdown-btn">
-                            <i data-lucide="settings"></i> Configurações
-                        </button>
-                        <button class="dropdown-btn">
-                            <i data-lucide="user-round-cog"></i> Convidar
-                        </button>
-                    </div>
-                    <div class="dropdown-divider"></div>
-                    <div class="dropdown-email">wadson@girlanoutdoor.com.br</div>
-                    <div class="dropdown-teams">
-                        <div class="team-item">
-                            <i data-lucide="users"></i> Controle do Sistema
-                        </div>
-                        <div class="team-item active">
-                            <i data-lucide="users"></i> Girlan Outdoor
-                        </div>
-                        <div class="team-item">
-                            <i data-lucide="users"></i> Maybu Solar
-                        </div>
-                        <div class="team-item add-team">
-                            <i data-lucide="plus"></i> Nova Equipe
-                        </div>
-                    </div>
-                    <div class="dropdown-divider"></div>
-                    <div class="dropdown-footer">
-                        <button class="dropdown-btn">
-                            Adicionar outra conta
-                        </button>
-                        <button class="dropdown-btn">
-                            <i data-lucide="log-out"></i> Sair
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="content-area">
-                <div class="page-header">
-                    <h1>Agenda</h1>
-                    <div class="page-actions">
-                        <button class="btn-primary">
-                            <i data-lucide="calendar-plus"></i> Nova Reunião
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="content-grid">
-                    <div class="content-column-left">
-                        <div class="content-card">
-                            <div class="card-header">
-                                <div class="date-navigation">
-                                    <button class="icon-btn">
-                                        <i data-lucide="chevron-left"></i>
-                                    </button>
-                                    <h2>Quarta-feira, 15 de Maio</h2>
-                                    <button class="icon-btn">
-                                        <i data-lucide="chevron-right"></i>
-                                    </button>
-                                </div>
-                                <div class="view-options">
-                                    <button class="view-option active">Dia</button>
-                                    <button class="view-option">Semana</button>
-                                    <button class="view-option">Mês</button>
-                                </div>
-                            </div>
-                            
-                            <div class="card-body">
-                                <div class="timeline">
-                                    <!-- Time Slot 1 -->
-                                    <div class="time-slot">
-                                        <div class="time-label">09:00</div>
-                                        <div class="events">
-                                            <div class="event-card">
-                                                <div class="event-time">09:00 - 09:30</div>
-                                                <div class="event-title">Reunião com Brunna (Aliare)</div>
-                                                <div class="event-actions">
-                                                    <button class="icon-btn small">
-                                                        <i data-lucide="phone"></i>
-                                                    </button>
-                                                    <button class="icon-btn small">
-                                                        <i data-lucide="message-square"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Time Slot 2 -->
-                                    <div class="time-slot">
-                                        <div class="time-label">11:00</div>
-                                        <div class="events">
-                                            <div class="event-card highlight">
-                                                <div class="event-time">11:00 - 12:00</div>
-                                                <div class="event-title">Apresentação para Maybu Solar</div>
-                                                <div class="event-actions">
-                                                    <button class="icon-btn small">
-                                                        <i data-lucide="video"></i>
-                                                    </button>
-                                                    <button class="icon-btn small">
-                                                        <i data-lucide="message-square"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Time Slot 3 -->
-                                    <div class="time-slot">
-                                        <div class="time-label">15:00</div>
-                                        <div class="events">
-                                            <div class="event-card">
-                                                <div class="event-time">15:00 - 15:30</div>
-                                                <div class="event-title">Follow-up com Carlos</div>
-                                                <div class="event-actions">
-                                                    <button class="icon-btn small">
-                                                        <i data-lucide="phone"></i>
-                                                    </button>
-                                                    <button class="icon-btn small">
-                                                        <i data-lucide="message-square"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="content-column-right">
-                        <div class="content-card">
-                            <div class="card-header">
-                                <h2>Próximos Compromissos</h2>
-                            </div>
-                            <div class="card-body">
-                                <div class="upcoming-events">
-                                    <!-- Event 1 -->
-                                    <div class="event-item">
-                                        <div class="event-date">
-                                            <div class="event-day">16</div>
-                                            <div class="event-month">MAI</div>
-                                        </div>
-                                        <div class="event-details">
-                                            <div class="event-time">10:00 - 10:30</div>
-                                            <div class="event-title">Reunião com TI Aliare</div>
-                                        </div>
-                                        <button class="icon-btn">
-                                            <i data-lucide="more-vertical"></i>
-                                        </button>
-                                    </div>
-                                    
-                                    <!-- Event 2 -->
-                                    <div class="event-item">
-                                        <div class="event-date">
-                                            <div class="event-day">17</div>
-                                            <div class="event-month">MAI</div>
-                                        </div>
-                                        <div class="event-details">
-                                            <div class="event-time">14:00 - 15:00</div>
-                                            <div class="event-title">Apresentação proposta Maybu</div>
-                                        </div>
-                                        <button class="icon-btn">
-                                            <i data-lucide="more-vertical"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="content-card">
-                            <div class="card-header">
-                                <h2>Agendar Nova Reunião</h2>
-                            </div>
-                            <div class="card-body">
-                                <div class="quick-schedule">
-                                    <button class="schedule-option">
-                                        <i data-lucide="phone"></i> Ligação
-                                    </button>
-                                    <button class="schedule-option">
-                                        <i data-lucide="video"></i> Videochamada
-                                    </button>
-                                    <button class="schedule-option">
-                                        <i data-lucide="map-pin"></i> Presencial
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <div class="mx-6 py-4 border-t border-gray-200">
+            <div class="flex items-center space-x-3 cursor-pointer hover:opacity-80 transition-opacity">
+                <div class="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center font-bold">GO</div>
+                <div class="flex items-center space-x-1">
+                    <span class="font-bold">Girlan Outdoor</span>
+                    <i data-lucide="chevrons-up-down" class="w-4 h-4 text-gray-500"></i>
                 </div>
             </div>
         </div>
     </div>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/1.0.0/lucide.min.js"></script>
-    <script src="js/app.js"></script>
+
+    <div id="mainContent" class="transition-transform duration-300 ease-in-out relative z-0">
+
+        <!-- side menu open -->
+        <header class="flex justify-between items-center p-4">
+            <div id="menuButton" class="flex items-center space-x-2 cursor-pointer hover:opacity-80">
+                <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                <h1 class="text-sm font-medium">Agenda</h1>
+            </div>
+        </header>
+
+        <!-- main-->
+        <main class="p-4 pb-24 mr-4 space-y-4 relative">
+
+            <div class="flex items-center justify-between space-x-2">
+                <button class="flex items-center space-x-1 bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">
+                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                    <span>Calendário</span>
+                </button>
+                <div class="flex items-center space-x-3">
+                    <i data-lucide="search" class="w-5 h-5 text-gray-500"></i>
+                    <i data-lucide="list-filter" class="w-5 h-5 text-gray-500"></i>
+                    <button class="p-1 bg-blue-500 hover:bg-blue-400 rounded-md text-white">
+                        <i data-lucide="plus" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center text-sm text-gray-600 font-medium">
+                <span>julho de 2025</span>
+                <div class="flex items-center space-x-2">
+                    <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                    <span>Hoje</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                </div>
+            </div>
+
+            <div class="text-xs text-gray-400 grid grid-cols-7 text-center">
+                <div>seg.</div>
+                <div>ter.</div>
+                <div>qua.</div>
+                <div>qui.</div>
+                <div>sex.</div>
+                <div>sab.</div>
+                <div>dom.</div>
+            </div>
+
+            <div class="grid grid-cols-7 text-center text-sm pb-6">
+                <div class="relative flex flex-col items-center">
+                    <div class="flex items-center justify-center rounded-full font-semibold">21</div>
+                    <span class="w-1 h-1 bg-blue-500 rounded-full mt-1"></span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div>22</div>
+                    <span class="w-1 h-1 bg-blue-500 rounded-full mt-1"></span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div>23</div>
+                    <span class="w-1 h-1 bg-blue-500 rounded-full mt-1"></span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div>24</div>
+                    <span class="w-1 h-1 bg-blue-500 rounded-full mt-1"></span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div>25</div>
+                    <span class="w-1 h-1 bg-blue-500 rounded-full mt-1"></span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div>26</div>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div>27</div>
+                </div>
+            </div>
+
+            <div class="flex items-center p-3 border rounded-lg space-x-3">
+                        <div class="flex flex-col items-center justify-center text-center text-xs font-bold mr-3">
+                            <div class="uppercase">Jul</div>
+                            <div>21</div>
+                        </div>
+                        <a href="#" class="flex flex-1 flex-col cursor-pointer hover:opacity-80">
+                            <div class="font-medium">Luis</div>
+                            <div class="text-sm text-gray-500">Agência Stamp </div>
+                            <div class="text-sm text-gray-500">último contato 17 Jun <span class="text-red-600">(+ de 1 mês átras)</span></div>
+                        </a>
+                        <div class="flex flex-col items-center justify-center">
+                            <button class="p-1 hover:text-blue-500 hover:bg-slate-50 rounded transition-colors">
+                                <i data-lucide="calendar-check-2" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center p-3 border rounded-lg space-x-3">
+                        <div class="flex flex-col items-center justify-center text-center text-xs font-bold mr-3">
+                            <div class="uppercase">Jul</div>
+                            <div>21</div>
+                        </div>
+                        <a href="#" class="flex flex-1 flex-col cursor-pointer hover:opacity-80">
+                            <div class="font-medium">Jessica Celeste </div>
+                            <div class="text-sm text-gray-500">Jessica Celeste</div>
+                            <div class="text-sm text-gray-500">último contato 14 Jun <span class="text-red-600">(+ de 1 mês átras)</span></div>
+                        </a>
+                        <div class="flex flex-col items-center justify-center">
+                            <button class="p-1 hover:text-blue-500 hover:bg-slate-50 rounded transition-colors">
+                                <i data-lucide="calendar-check-2" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center p-3 border rounded-lg space-x-3">
+                        <div class="flex flex-col items-center justify-center text-center text-xs font-bold mr-3">
+                            <div class="uppercase">Jul</div>
+                            <div>21</div>
+                        </div>
+                        <a href="#" class="flex flex-1 flex-col cursor-pointer hover:opacity-80">
+                            <div class="font-medium">Luis</div>
+                            <div class="text-sm text-gray-500">Re/Max Verano</div>
+                            <div class="text-sm text-gray-500">último contato 08 Jul (13 dias átras)</div>
+                        </a>
+                        <div class="flex flex-col items-center justify-center">
+                            <button class="p-1 hover:text-blue-500 hover:bg-slate-50 rounded transition-colors">
+                                <i data-lucide="calendar-check-2" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center p-3 border rounded-lg space-x-3">
+                        <div class="flex flex-col items-center justify-center text-center text-xs font-bold mr-3">
+                            <div class="uppercase">Jul</div>
+                            <div>21</div>
+                        </div>
+                        <a href="#" class="flex flex-1 flex-col cursor-pointer hover:opacity-80">
+                            <div class="font-medium">Leonardo Valente</div>
+                            <div class="text-sm text-gray-500">Leonardo Valente</div>
+                            <div class="text-sm text-gray-500">último contato 14 Jun <span class="text-red-600">(+ de 1 mês átras)</span></div>
+                        </a>
+                        <div class="flex flex-col items-center justify-center">
+                            <button class="p-1 hover:text-blue-500 hover:bg-slate-50 rounded transition-colors">
+                                <i data-lucide="calendar-check-2" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center p-3 border rounded-lg space-x-3">
+                        <div class="flex flex-col items-center justify-center text-center text-xs font-bold mr-3">
+                            <div class="uppercase">Jul</div>
+                            <div>21</div>
+                        </div>
+                        <a href="#" class="flex flex-1 flex-col cursor-pointer hover:opacity-80">
+                            <div class="font-medium">Carroll</div>
+                            <div class="text-sm text-gray-500">Soluções inteligentes </div>
+                            <div class="text-sm text-gray-500">último contato 30 Jun (21 dias átras)</div>
+                        </a>
+                        <div class="flex flex-col items-center justify-center">
+                            <button class="p-1 hover:text-blue-500 hover:bg-slate-50 rounded transition-colors">
+                                <i data-lucide="calendar-check-2" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    </div>
+        </main>
+        <!--menu -->
+        <nav class="sticky bottom-0 w-full border-t bg-white bg-opacity-60 backdrop-blur-sm flex justify-around py-4">
+            <a href="index.html" class="hover:text-blue-500 rounded transition-colors"><i data-lucide="home"
+                    class="w-6 h-6"></i></a>
+            <a href="search.html" class="hover:text-blue-500 rounded transition-colors"><i data-lucide="search"
+                    class="w-6 h-6"></i></a>
+            <a href="inbox.html" class="hover:text-blue-500 rounded transition-colors"><i data-lucide="inbox"
+                    class="w-6 h-6"></i></a>
+            <a href="new.html" class="hover:text-blue-500 rounded transition-colors"><i data-lucide="user-round-pen"
+                    class="w-6 h-6"></i></a>
+        </nav>
+
+    </div>
+
+    <script src="app.js"></script>
     <script>
         lucide.createIcons();
-    </script> 
+    </script>
 </body>
+
 </html>

@@ -1,281 +1,379 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="BTlpNnahPasKg7FtL04eEDs4UL49issmZIdY4Kww">
-    <title>Dashboard | AgendaCRM</title>
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/app.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-</head>
-<body class="bg-gray-50">
-    <div class="app-container">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <img src="https://app.agendacrm.com.br/img/logo.png" alt="AgendaCRM" class="logo">
-                <button class="sidebar-close">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-align-left-icon lucide-align-left"><path d="M15 12H3"/><path d="M17 18H3"/><path d="M21 6H3"/></svg>
-                </button>
-            </div>
-            
-            <nav class="sidebar-nav">
-                <div class="nav-section">
-                    <a href="index.html" class="nav-item active">
-                        <i data-lucide="layout-dashboard" class="icon"></i>
-                        <span>Dashboard</span>
-                    </a>
-                    <a href="novo_contato.html" class="nav-item">
-                        <i data-lucide="user-plus" class="icon"></i>
-                        <span>Novo Contato</span>
-                    </a>
-                </div>
-                <div class="nav-section">
-                    <a href="contatos.html" class="nav-item">
-                        <i data-lucide="users" class="icon"></i>
-                        <span>Contatos</span>
-                    </a>
-                    <a href="agenda.html" class="nav-item">
-                        <i data-lucide="calendar" class="icon"></i>
-                        <span>Agenda</span>
-                    </a>
-                    <a href="negocios.html" class="nav-item">
-                        <i data-lucide="bar-chart-2" class="icon"></i>
-                        <span>Negociações</span>
-                    </a>
-                    <a href="relatorios.html" class="nav-item">
-                        <i data-lucide="pie-chart" class="icon"></i>
-                        <span>Relatórios</span>
-                    </a>
-                </div>
-            </nav>
-            
-            <!-- Footer Section -->
-            <div class="sidebar-footer">
-                <div class="nav-section">
-                    <a href="#" class="nav-item">
-                        <i data-lucide="settings" class="icon"></i>
-                        <span>Configurações</span>
-                    </a>
-                    <a href="#" class="nav-item">
-                        <i data-lucide="trash-2" class="icon"></i>
-                        <span>Lixeira</span>
-                    </a>
-                </div>
-            </div>
-        </aside>
+<html lang="en">
 
-        <!-- Main Content -->
-        <div class="main-content">
-            <!-- Top-bar -->
-            <div class="top-bar">
-                <button class="mobile-menu-button">
-                    <i data-lucide="align-left"></i>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AGENDA CRM – Dashboard</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    transitionProperty: {
+                        'transform-opacity': 'transform, opacity',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        #sidebar.open {
+            transform: translateX(0) !important;
+        }
+
+        #mainContent {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #mainContent.shifted {
+            transform: translateX(80vw);
+        }
+
+        #overlay.active {
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-800 overflow-x-hidden">
+
+    <!-- Overlay -->
+    <div id="overlay"
+        class="fixed inset-0 bg-black bg-opacity-50 z-40 opacity-0 invisible transition-opacity duration-300"></div>
+
+    <!-- Sidebar -->
+    <div id="sidebar"
+        class="fixed top-0 left-0 w-4/5 h-full bg-white shadow-2xl z-50 flex flex-col transform -translate-x-full transition-transform duration-300 ease-in-out">
+        <!-- Header -->
+        <div class="flex items-center justify-between p-6">
+            <img src="https://app.agendacrm.com.br/img/logo.png" alt="Logo" class="h-10">
+        </div>
+
+        <!-- Menu -->
+        <nav class="flex-1 py-4 flex flex-col">
+            <!-- Top menu -->
+            <div class="space-y-1">
+                <a href="contatos.html" class="flex items-center px-6 py-3 font-medium hover:bg-gray-100 transition-colors">
+                    <i data-lucide="users" class="w-5 h-5 mr-4"></i>
+                    <span>Contatos</span>
+                </a>
+                <a href="agenda.html" class="flex items-center px-6 py-3 font-medium hover:bg-gray-100 transition-colors">
+                    <i data-lucide="calendar" class="w-5 h-5 mr-4"></i>
+                    <span>Agenda</span>
+                </a>
+                <a href="negocios.html" class="flex items-center px-6 py-3 font-medium hover:bg-gray-100 transition-colors">
+                    <i data-lucide="bar-chart-2" class="w-5 h-5 mr-4"></i>
+                    <span>Negociações</span>
+                </a>
+                <a href="relatorios.html" class="flex items-center px-6 py-3 font-medium hover:bg-gray-100 transition-colors">
+                    <i data-lucide="pie-chart" class="w-5 h-5 mr-4"></i>
+                    <span>Relatórios</span>
+                </a>
+            </div>
+
+            <div class="flex-1"></div>
+
+            <div class="border-t border-gray-200 mx-6 pt-6">
+                <a href="#" class="flex items-center py-1 text-gray-600 hover:bg-gray-100 text-sm transition-colors">
+                    <i data-lucide="settings" class="w-4 h-4 mr-4"></i>
+                    <span>Configurações</span>
+                </a>
+                <a href="#" class="flex items-center py-1 text-gray-600 hover:bg-gray-100 text-sm transition-colors">
+                    <i data-lucide="trash" class="w-4 h-4 mr-4"></i>
+                    <span>Lixeira</span>
+                </a>
+                <a href="#" class="flex items-center py-1 text-gray-600 hover:bg-gray-100 text-sm transition-colors">
+                    <i data-lucide="help-circle" class="w-4 h-4 mr-4"></i>
+                    <span>Ajuda e Suporte</span>
+                </a>
+            </div>
+        </nav>
+        <!-- Avatar -->
+        <div class="flex mx-6 py-2 border-t border-gray-200">
+            <div class="flex items-center p-2 space-x-3 rounded-xl cursor-pointer hover:bg-blue-50 transition-opacity">
+                <div class="w-10 h-10 rounded-full bg-blue-300 flex items-center justify-center font-bold">GO</div>
+                <div class="flex items-center space-x-1">
+                    <span class="font-bold">Girlan Outdoor</span>
+                    <i data-lucide="chevrons-up-down" class="w-4 h-4 text-gray-500"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="mainContent" class="min-h-screen transition-all duration-300">
+        <!-- Top bar -->
+        <header class="flex items-center justify-between p-4 bg-white relative z-30">
+            <div class="flex items-center space-x-3">
+                <button id="menuButton" class="hover:opacity-80 transition-opacity">
+                    <i data-lucide="menu" class="w-5 h-5"></i>
                 </button>
-                
-                <div class="search-container desktop-search">
-                    <form action="https://app.agendacrm.com.br/contacts" method="GET">
-                        <div class="search-input">
-                            <i data-lucide="search" class="icon"></i>
-                            <input type="search" name="q" placeholder="Pesquisar contatos...">
-                        </div>
-                    </form>
-                </div>
-                
-                <div class="user-menu-top">
-                    <div class="user-avatar">GO</div>
-                    <span class="user-name desktop-only">Girlan Outdoor</span>
-                </div>
-                <div class="user-dropdown">
-    <div class="dropdown-header">
-        <div class="team-name">Girlan Outdoor</div>
-        <div class="team-plan">Plano básico - 8 membros</div>
-    </div>
-    
-    <div class="dropdown-actions">
-        <button class="dropdown-btn">
-            <i data-lucide="settings"></i> Configurações
-        </button>
-        <button class="dropdown-btn">
-            <i data-lucide="user-round-cog"></i> Convidar
-        </button>
-    </div>
-    
-    <div class="dropdown-divider"></div>
-    
-    <div class="dropdown-email">
-        wadson@girlanoutdoor.com.br
-    </div>
-    
-    <div class="dropdown-teams">
-        <div class="team-item">
-            <i data-lucide="users"></i> Controle do Sistema
-        </div>
-        <div class="team-item active">
-            <i data-lucide="users"></i> Girlan Outdoor
-        </div>
-        <div class="team-item">
-            <i data-lucide="users"></i> Maybu Solar
-        </div>
-        <div class="team-item add-team">
-            <i data-lucide="plus"></i> Nova Equipe
-        </div>
-    </div>
-    
-    <div class="dropdown-divider"></div>
-    
-    <div class="dropdown-footer">
-        <button class="dropdown-btn">
-            Adicionar outra conta
-        </button>
-        <button class="dropdown-btn">
-            <i data-lucide="log-out"></i> Sair
-        </button>
-    </div>
-</div>
+                <img src="https://app.agendacrm.com.br/img/fav-icon.png" alt="Icon" class="w-6 h-6">
             </div>
-            
-            <!-- Content Area -->
-            <div class="content-area">
-                <!-- Welcome Message -->
-                <div class="welcome-message">
-                    <h1>Bom dia, Wadson!</h1>
-                </div>
-                
-                <!-- Main Content Grid -->
-                <div class="content-grid">
-                    <!-- Left Column (2/3 width) -->
-                    <div class="content-column-left">
-                        <!-- Today's Agenda -->
-                        <div class="content-card">
-                            <div class="card-header">
-                                <h2>Agendamentos do Dia</h2>
-                                <button class="btn-primary btn-sm">
-                                    <i data-lucide="plus" class="icon"></i>
-                                    Novo
-                                </button>
-                            </div>
-                            <div class="card-body">
-                                <div class="empty-state">
-                                    <i data-lucide="check-circle" class="icon"></i>
-                                    <p>Você não tem agendamentos pendentes.</p>
-                                </div>
-                            </div>
+        </header>
+
+        <!-- Dashboard -->
+        <main class="p-4 pb-28 space-y-4">
+            <h1 class="text-2xl font-semibold">Bom dia, Wadson.</h1>
+
+            <!-- KPI Cards -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="border border-gray-200 rounded-xl shadow-md overflow-hidden">
+                    <div class="flex p-2 bg-blue-50 justify-between items-center">
+                        <div class="p-4 bg-blue-100 text-blue-500 rounded-lg">
+                            <i data-lucide="users" class="w-6 h-6"></i>
                         </div>
-                        
-                        <!-- Late Appointments -->
-                        <div class="content-card">
-                            <div class="card-header">
-                                <h2>Agendamentos em Atraso</h2>
-                            </div>
-                            <div class="card-body">
-                                <div class="appointment-list">
-                                    <!-- Appointment Item -->
-                                    <div class="appointment-item">
-                                        <div class="appointment-date">
-                                            <span class="month">Jul</span>
-                                            <span class="day">09</span>
-                                        </div>
-                                        <div class="appointment-details">
-                                            <div class="appointment-meta">
-                                                <span class="salesperson">wadson</span>
-                                            </div>
-                                            <h4>Brunna</h4>
-                                            <p>Aliare Siagri Sistemas de Gestão</p>
-                                        </div>
-                                        <button class="btn-primary btn-sm">
-                                            <i data-lucide="check" class="icon"></i>
-                                            Registrar
-                                        </button>
-                                    </div>
-                                </div>
-                                
-                                <div class="pagination">
-                                    <button class="btn-outline" disabled>
-                                        <i data-lucide="chevron-left" class="icon"></i>
-                                        Anterior
-                                    </button>
-                                    <span>Página 1 de 2</span>
-                                    <button class="btn-outline">
-                                        Próxima
-                                        <i data-lucide="chevron-right" class="icon"></i>
-                                    </button>
-                                </div>
-                            </div>
+                        <div class="text-right mr-2">
+                            <div class="text-lg font-bold">297</div>
+                            <div class="text-gray-600 text-sm">Contatos</div>
                         </div>
                     </div>
-                    
-                    <!-- Right Column (1/3 width) -->
-                    <div class="content-column-right">
-                        <!-- Stats Card -->
-                        <div class="content-card stats-card">
-                            <div class="stats-grid">
-                                <!-- Contatos -->
-                                <div class="stat-item">
-                                    <div class="stat-icon bg-indigo-100">
-                                        <i data-lucide="users" class="icon text-indigo-600"></i>
-                                    </div>
-                                    <div class="stat-content">
-                                        <h3>297</h3>
-                                        <p>Contatos</p>
-                                        <span class="stat-meta">1 novo este mês</span>
-                                    </div>
-                                </div>
-                                
-                                <!-- Agendamentos -->
-                                <div class="stat-item">
-                                    <div class="stat-icon bg-amber-100">
-                                        <i data-lucide="calendar" class="icon text-amber-600"></i>
-                                    </div>
-                                    <div class="stat-content">
-                                        <h3>182</h3>
-                                        <p>Agendamentos</p>
-                                        <span class="stat-meta">30.2% realizado</span>
-                                    </div>
-                                </div>
-                                
-                                <!-- Vendas Fechadas -->
-                                <div class="stat-item">
-                                    <div class="stat-icon bg-blue-100">
-                                        <i data-lucide="thumbs-up" class="icon text-blue-600"></i>
-                                    </div>
-                                    <div class="stat-content">
-                                        <h3>5 <span class="text-red-500">-77.3%</span></h3>
-                                        <p>Vendas Fechadas</p>
-                                        <span class="stat-meta">22 mês anterior</span>
-                                    </div>
-                                </div>
-                                
-                                <!-- Faturamento -->
-                                <div class="stat-item">
-                                    <div class="stat-icon bg-green-100">
-                                        <i data-lucide="dollar-sign" class="icon text-green-600"></i>
-                                    </div>
-                                    <div class="stat-content">
-                                        <h3>R$ 34.000,00 <span class="text-red-500">-78.8%</span></h3>
-                                        <p>Faturamento</p>
-                                        <span class="stat-meta">R$ 160.410,00 mês anterior</span>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="p-3 text-sm text-gray-500 border-t border-gray-200">+1 este mês</div>
+                </div>
+
+                <div class="border border-gray-200 rounded-xl shadow-md overflow-hidden">
+                    <div class="flex p-2 bg-purple-50 justify-between items-center">
+                        <div class="p-4 bg-purple-100 text-purple-500 rounded-lg">
+                            <i data-lucide="calendar-check" class="w-6 h-6"></i>
                         </div>
+                        <div class="text-right mr-2">
+                            <div class="text-lg font-bold">182</div>
+                            <div class="text-gray-600 text-sm">Agendamentos</div>
+                        </div>
+                    </div>
+                    <div class="p-3 text-sm text-gray-500 border-t border-gray-200">30% realizados</div>
+                </div>
+
+                <div class="border border-gray-200 rounded-xl shadow-md overflow-hidden">
+                    <div class="flex p-2 bg-green-50 justify-between items-center">
+                        <div class="p-4 bg-green-100 text-green-500 rounded-lg">
+                            <i data-lucide="handshake" class="w-6 h-6"></i>
+                        </div>
+                        <div class="text-right mr-2">
+                            <div class="text-lg font-bold">5</div>
+                            <div class="text-gray-600 text-sm">Vendas fechadas</div>
+                        </div>
+                    </div>
+                    <div class="p-3 text-sm text-gray-500 border-t border-gray-200">8 vendas abertas</div>
+                </div>
+
+                <div class="border border-gray-200 rounded-xl shadow-md overflow-hidden">
+                    <div class="flex p-2 bg-yellow-50 justify-between items-center">
+                        <div class="p-4 bg-yellow-100 text-yellow-500 rounded-lg">
+                            <i data-lucide="dollar-sign" class="w-6 h-6"></i>
+                        </div>
+                        <div class="text-right mr-2">
+                            <div class="text-lg font-bold">R$ 34.000</div>
+                            <div class="text-gray-600 text-sm">Faturamento</div>
+                        </div>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
+                        <div class="bg-green-500 h-2 rounded-full w-7/10"></div>
+                    </div>
+                    <div class="p-3 text-xs text-gray-500 border-t border-gray-200">+R$ 16.000 para bater a meta</div>
+                </div>
+            </div>
+
+            <!-- Appointments list -->
+            <div class="space-y-2">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center space-x-1 cursor-pointer hover:opacity-80 transition-opacity"
+                        id="toggleAppointments">
+                        <i id="appointmentsIcon" data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+                        <h2 class="font-semibold text-lg">Agendamentos do dia</h2>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <i data-lucide="more-horizontal"
+                            class="w-5 h-5 cursor-pointer hover:opacity-80 transition-opacity"></i>
+                        <button class="p-1 hover:text-blue-500 hover:bg-slate-50 rounded transition-colors">
+                            <i data-lucide="plus" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="appointmentsList" class="space-y-2">
+
+                    <div class="flex items-center p-3 border rounded-lg space-x-3">
+                        <div class="flex flex-col items-center justify-center text-center text-xs font-bold mr-3">
+                            <div class="uppercase">Jul</div>
+                            <div>21</div>
+                        </div>
+                        <a href="#" class="flex flex-1 flex-col cursor-pointer hover:opacity-80">
+                            <div class="font-medium">Luis</div>
+                            <div class="text-sm text-gray-500">Agência Stamp </div>
+                            <div class="text-sm text-gray-500">último contato 17 Jun <span class="text-red-600">(+ de 1 mês átras)</span></div>
+                        </a>
+                        <div class="flex flex-col items-center justify-center">
+                            <button class="p-1 hover:text-blue-500 hover:bg-slate-50 rounded transition-colors">
+                                <i data-lucide="calendar-check-2" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center p-3 border rounded-lg space-x-3">
+                        <div class="flex flex-col items-center justify-center text-center text-xs font-bold mr-3">
+                            <div class="uppercase">Jul</div>
+                            <div>21</div>
+                        </div>
+                        <a href="#" class="flex flex-1 flex-col cursor-pointer hover:opacity-80">
+                            <div class="font-medium">Jessica Celeste </div>
+                            <div class="text-sm text-gray-500">Jessica Celeste</div>
+                            <div class="text-sm text-gray-500">último contato 14 Jun <span class="text-red-600">(+ de 1 mês átras)</span></div>
+                        </a>
+                        <div class="flex flex-col items-center justify-center">
+                            <button class="p-1 hover:text-blue-500 hover:bg-slate-50 rounded transition-colors">
+                                <i data-lucide="calendar-check-2" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center p-3 border rounded-lg space-x-3">
+                        <div class="flex flex-col items-center justify-center text-center text-xs font-bold mr-3">
+                            <div class="uppercase">Jul</div>
+                            <div>21</div>
+                        </div>
+                        <a href="#" class="flex flex-1 flex-col cursor-pointer hover:opacity-80">
+                            <div class="font-medium">Luis</div>
+                            <div class="text-sm text-gray-500">Re/Max Verano</div>
+                            <div class="text-sm text-gray-500">último contato 08 Jul (13 dias átras)</div>
+                        </a>
+                        <div class="flex flex-col items-center justify-center">
+                            <button class="p-1 hover:text-blue-500 hover:bg-slate-50 rounded transition-colors">
+                                <i data-lucide="calendar-check-2" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center p-3 border rounded-lg space-x-3">
+                        <div class="flex flex-col items-center justify-center text-center text-xs font-bold mr-3">
+                            <div class="uppercase">Jul</div>
+                            <div>21</div>
+                        </div>
+                        <a href="#" class="flex flex-1 flex-col cursor-pointer hover:opacity-80">
+                            <div class="font-medium">Leonardo Valente</div>
+                            <div class="text-sm text-gray-500">Leonardo Valente</div>
+                            <div class="text-sm text-gray-500">último contato 14 Jun <span class="text-red-600">(+ de 1 mês átras)</span></div>
+                        </a>
+                        <div class="flex flex-col items-center justify-center">
+                            <button class="p-1 hover:text-blue-500 hover:bg-slate-50 rounded transition-colors">
+                                <i data-lucide="calendar-check-2" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center p-3 border rounded-lg space-x-3">
+                        <div class="flex flex-col items-center justify-center text-center text-xs font-bold mr-3">
+                            <div class="uppercase">Jul</div>
+                            <div>21</div>
+                        </div>
+                        <a href="#" class="flex flex-1 flex-col cursor-pointer hover:opacity-80">
+                            <div class="font-medium">Carroll</div>
+                            <div class="text-sm text-gray-500">Soluções inteligentes </div>
+                            <div class="text-sm text-gray-500">último contato 30 Jun (21 dias átras)</div>
+                        </a>
+                        <div class="flex flex-col items-center justify-center">
+                            <button class="p-1 hover:text-blue-500 hover:bg-slate-50 rounded transition-colors">
+                                <i data-lucide="calendar-check-2" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center">
+                        <button class="text-blue-500 text-sm hover:underline mt-2">+ Carregar mais</button>
                     </div>
                 </div>
             </div>
-        </div>
+
+            <!-- AGENDAMENTOS EM ATRASO -->
+            <div class="space-y-2">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center space-x-1 cursor-pointer hover:opacity-80 transition-opacity"
+                        id="toggleOverdue">
+                        <i id="overdueIcon" data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+                        <h2 class="font-semibold text-lg">Agendamentos em atraso</h2>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <i data-lucide="more-horizontal"
+                            class="w-5 h-5 cursor-pointer hover:opacity-80 transition-opacity"></i>
+                        <button class="p-1 hover:text-blue-500 hover:bg-slate-50 rounded transition-colors">
+                            <i data-lucide="plus" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="overdueList" class="space-y-2">
+                    <div class="flex items-center p-3 border rounded-lg space-x-3">
+                        <div class="flex flex-col items-center justify-center text-center text-xs font-bold mr-3">
+                            <div class="uppercase">Jul</div>
+                            <div>9</div>
+                        </div>
+                        <a href="#" class="flex flex-1 flex-col cursor-pointer hover:opacity-80">
+                            <div class="font-medium">Camila</div>
+                            <div class="text-sm text-gray-500">OOH Net Brasil Publicidade Ltda</div>
+                            <div class="mt-1 px-2 py-0.5 text-xs font-semibold bg-red-100 text-red-700 rounded-full">
+                                22 dias em atraso
+                            </div>
+                        </a>
+                        <button class="p-1 hover:text-blue-500 hover:bg-slate-50 rounded transition-colors">
+                            <i data-lucide="calendar-check-2" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+
+                    <div class="flex items-center p-3 border rounded-lg space-x-3">
+                        <div class="flex flex-col items-center justify-center text-center text-xs font-bold mr-3">
+                            <div class="uppercase">Jul</div>
+                            <div>9</div>
+                        </div>
+                        <a href="#" class="flex flex-1 flex-col cursor-pointer hover:opacity-80">
+                            <div class="font-medium">Júlio</div>
+                            <div class="text-sm text-gray-500">Shopping Serrinha</div>
+                            <div class="mt-1 px-2 py-0.5 text-xs font-semibold bg-red-100 text-red-700 rounded-full">
+                                22 dias em atraso
+                            </div>
+                        </a>
+                        <button class="p-1 hover:text-blue-500 hover:bg-slate-50 rounded transition-colors">
+                            <i data-lucide="calendar-check-2" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                    <div class="flex justify-center">
+                    <button class="text-blue-500 text-sm hover:underline mt-2">+ Carregar mais</button>
+                </div>
+                </div>
+
+                
+            </div>
+        </main>
+
+        <nav class="sticky bottom-0 w-full bg-white bg-opacity-60 backdrop-blur-sm border-t flex justify-around py-4 z-30">
+            <i data-lucide="home" class="w-6 h-6 text-blue-500"></i>
+            <a href="search.html" class="hover:text-blue-500 rounded transition-colors">
+                <i data-lucide="search" class="w-6 h-6"></i>
+            </a>
+            <a href="inbox.html" class="hover:text-blue-500 rounded transition-colors">
+                <i data-lucide="inbox" class="w-6 h-6"></i>
+            </a>
+            <a href="new.html" class="hover:text-blue-500 rounded transition-colors">
+                <i data-lucide="user-round-pen" class="w-6 h-6"></i>
+            </a>
+        </nav>
     </div>
-    
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/1.0.0/lucide.min.js"></script>
-    <script src="js/app.js"></script>
+
+    <script src="app.js"></script>
     <script>
         lucide.createIcons();
-    </script> 
+    </script>
 </body>
+
 </html>

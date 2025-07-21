@@ -1,218 +1,215 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Negociações | AgendaCRM</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/app.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agenda CRM – Negociações</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    transitionProperty: { 'transform-opacity': 'transform, opacity' }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        #sidebar.open { transform: translateX(0) !important; }
+        #mainContent { transition: transform .3s ease; }
+        #mainContent.shifted { transform: translateX(80vw); }
+        #overlay.active { opacity: 1 !important; visibility: visible !important; }
+    </style>
 </head>
-<body class="bg-gray-50">
-    <div class="app-container">
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <img src="https://app.agendacrm.com.br/img/logo.png" alt="AgendaCRM" class="logo">
-                <button class="sidebar-close">
-                    <i data-lucide="x"></i>
-                </button>
+
+<body class="bg-white text-gray-800">
+    <!-- Overlay -->
+    <div id="overlay"
+         class="fixed inset-0 bg-black/50 z-40 opacity-0 invisible transition-opacity"></div>
+
+    <!-- Sidebar (copy-paste from index.html / contatos.html) -->
+    <div id="sidebar"
+         class="fixed top-0 left-0 w-4/5 h-full bg-white shadow-2xl z-50 flex flex-col -translate-x-full transition-transform">
+        <div class="flex items-center justify-between p-6">
+            <img src="https://app.agendacrm.com.br/img/logo.png" alt="Logo" class="h-10">
+        </div>
+
+        <nav class="flex-1 py-4 flex flex-col">
+            <div class="space-y-1">
+                <a href="contatos.html" class="flex items-center px-6 py-3 font-medium hover:bg-gray-100">
+                    <i data-lucide="users" class="w-5 h-5 mr-4"></i>
+                    <span>Contatos</span>
+                </a>
+                <a href="agenda.html" class="flex items-center px-6 py-3 font-medium hover:bg-gray-100">
+                    <i data-lucide="calendar" class="w-5 h-5 mr-4"></i>
+                    <span>Agenda</span>
+                </a>
+                <a href="negocios.html" class="flex items-center px-6 py-3 font-medium hover:bg-gray-100 bg-blue-50">
+                    <i data-lucide="bar-chart-2" class="w-5 h-5 mr-4"></i>
+                    <span>Negociações</span>
+                </a>
+                <a href="relatorios.html" class="flex items-center px-6 py-3 font-medium hover:bg-gray-100">
+                    <i data-lucide="pie-chart" class="w-5 h-5 mr-4"></i>
+                    <span>Relatórios</span>
+                </a>
             </div>
-            
-            <nav class="sidebar-nav">
-                <div class="nav-section">
-                    <a href="index.html" class="nav-item active">
-                        <i data-lucide="layout-dashboard" class="icon"></i>
-                        <span>Dashboard</span>
-                    </a>
-                    <a href="novo_contato.html" class="nav-item">
-                        <i data-lucide="user-plus" class="icon"></i>
-                        <span>Novo Contato</span>
-                    </a>
-                </div>
-                <div class="nav-section">
-                    <a href="contatos.html" class="nav-item">
-                        <i data-lucide="users" class="icon"></i>
-                        <span>Contatos</span>
-                    </a>
-                    <a href="agenda.html" class="nav-item">
-                        <i data-lucide="calendar" class="icon"></i>
-                        <span>Agenda</span>
-                    </a>
-                    <a href="negocios.html" class="nav-item">
-                        <i data-lucide="bar-chart-2" class="icon"></i>
-                        <span>Negociações</span>
-                    </a>
-                    <a href="relatorios.html" class="nav-item">
-                        <i data-lucide="pie-chart" class="icon"></i>
-                        <span>Relatórios</span>
-                    </a>
-                </div>
-            </nav>
-            
-            <!-- Footer Section -->
-            <div class="sidebar-footer">
-                <div class="nav-section">
-                    <a href="#" class="nav-item">
-                        <i data-lucide="settings" class="icon"></i>
-                        <span>Configurações</span>
-                    </a>
-                    <a href="#" class="nav-item">
-                        <i data-lucide="trash-2" class="icon"></i>
-                        <span>Lixeira</span>
-                    </a>
-                </div>
+            <div class="flex-1"></div>
+            <div class="border-t border-gray-200 mx-6 pt-6">
+                <a href="#" class="flex items-center py-1 text-gray-600 hover:bg-gray-100 text-sm">
+                    <i data-lucide="settings" class="w-4 h-4 mr-4"></i>
+                    <span>Configurações</span>
+                </a>
+                <a href="#" class="flex items-center py-1 text-gray-600 hover:bg-gray-100 text-sm">
+                    <i data-lucide="trash" class="w-4 h-4 mr-4"></i>
+                    <span>Lixeira</span>
+                </a>
+                <a href="#" class="flex items-center py-1 text-gray-600 hover:bg-gray-100 text-sm">
+                    <i data-lucide="help-circle" class="w-4 h-4 mr-4"></i>
+                    <span>Ajuda e Suporte</span>
+                </a>
             </div>
-        </aside>
-        
-        <div class="main-content">
-            <div class="top-bar">
-
-                <button class="mobile-menu-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-align-left-icon lucide-align-left"><path d="M15 12H3"/><path d="M17 18H3"/><path d="M21 6H3"/></svg>
-                </button>
-
-                <div class="search-container desktop-search">
-                    <form action="https://app.agendacrm.com.br/contacts" method="GET">
-                        <div class="search-input">
-                            <i data-lucide="search" class="icon"></i>
-                            <input type="search" name="q" placeholder="Pesquisar contatos...">
-                        </div>
-                    </form>
-                </div>
-
-                <div class="user-menu-top">
-                    <div class="user-avatar">GO</div>
-                    <span class="user-name desktop-only">Girlan Outdoor</span>
-                </div>
-
-                <div class="user-dropdown">
-                    <div class="dropdown-header">
-                        <div class="team-name">Girlan Outdoor</div>
-                        <div class="team-plan">Plano básico - 8 membros</div>
-                    </div>
-                    <div class="dropdown-actions">
-                        <button class="dropdown-btn">
-                            <i data-lucide="settings"></i> Configurações
-                        </button>
-                        <button class="dropdown-btn">
-                            <i data-lucide="user-round-cog"></i> Convidar
-                        </button>
-                    </div>
-                    <div class="dropdown-divider"></div>
-                    <div class="dropdown-email">wadson@girlanoutdoor.com.br</div>
-                    <div class="dropdown-teams">
-                        <div class="team-item">
-                            <i data-lucide="users"></i> Controle do Sistema
-                        </div>
-                        <div class="team-item active">
-                            <i data-lucide="users"></i> Girlan Outdoor
-                        </div>
-                        <div class="team-item">
-                            <i data-lucide="users"></i> Maybu Solar
-                        </div>
-                        <div class="team-item add-team">
-                            <i data-lucide="plus"></i> Nova Equipe
-                        </div>
-                    </div>
-                    <div class="dropdown-divider"></div>
-                    <div class="dropdown-footer">
-                        <button class="dropdown-btn">
-                            Adicionar outra conta
-                        </button>
-                        <button class="dropdown-btn">
-                            <i data-lucide="log-out"></i> Sair
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="content-area">
-                <div class="page-header">
-                    <h1>Negociações</h1>
-                    <div class="page-actions">
-                        <button class="btn-primary">
-                            <i data-lucide="plus"></i> Nova Negociação
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="pipeline-container">
-                    <div class="pipeline-stage">
-                        <div class="stage-header">
-                            <h3>Contato Inicial</h3>
-                            <span class="stage-count">12</span>
-                        </div>
-                        <div class="deal-card">
-                            <div class="deal-title">Aliare Siagri</div>
-                            <div class="deal-value">R$ 45.000,00</div>
-                            <div class="deal-contact">Brunna Silva</div>
-                            <div class="deal-actions">
-                                <button class="btn-outline btn-sm">
-                                    <i data-lucide="calendar"></i> Agendar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="pipeline-stage">
-                        <div class="stage-header">
-                            <h3>Reunião Realizada</h3>
-                            <span class="stage-count">8</span>
-                        </div>
-                        <div class="deal-card">
-                            <div class="deal-title">Maybu Solar</div>
-                            <div class="deal-value">R$ 28.000,00</div>
-                            <div class="deal-contact">Carlos Mendes</div>
-                            <div class="deal-actions">
-                                <button class="btn-outline btn-sm">
-                                    <i data-lucide="file-text"></i> Proposta
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="pipeline-stage">
-                        <div class="stage-header">
-                            <h3>Proposta Enviada</h3>
-                            <span class="stage-count">5</span>
-                        </div>
-                        <div class="deal-card highlight">
-                            <div class="deal-title">Ventura Energia</div>
-                            <div class="deal-value">R$ 62.000,00</div>
-                            <div class="deal-contact">Ana Ventura</div>
-                            <div class="deal-actions">
-                                <button class="btn-primary btn-sm">
-                                    <i data-lucide="check"></i> Seguir
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="pipeline-stage">
-                        <div class="stage-header">
-                            <h3>Negociação</h3>
-                            <span class="stage-count">3</span>
-                        </div>
-                    </div>
-                    
-                    <div class="pipeline-stage">
-                        <div class="stage-header">
-                            <h3>Fechado</h3>
-                            <span class="stage-count">2</span>
-                        </div>
-                    </div>
+        </nav>
+        <div class="mx-6 py-4 border-t border-gray-200">
+            <div class="flex items-center space-x-3 cursor-pointer hover:opacity-80">
+                <div class="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center font-bold">GO</div>
+                <div class="flex items-center space-x-1">
+                    <span class="font-bold">Girlan Outdoor</span>
+                    <i data-lucide="chevrons-up-down" class="w-4 h-4 text-gray-500"></i>
                 </div>
             </div>
         </div>
     </div>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/1.0.0/lucide.min.js"></script>
-    <script src="js/app.js"></script>
+
+    <!-- Main Content -->
+    <div id="mainContent" class="transition-transform duration-300">
+        <!-- Header -->
+        <header class="flex justify-between items-center p-4">
+            <div id="menuButton" class="flex items-center space-x-2 cursor-pointer hover:opacity-80">
+                <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                <h1 class="text-sm font-medium">Negociações</h1>
+            </div>
+        </header>
+
+        <!-- Funil -->
+        <main class="p-4 pb-24 space-y-6 relative">
+            <!-- Etapa 1 -->
+            <div class="bg-gray-50 rounded-xl p-4">
+                <div class="flex items-center justify-between mb-3">
+                    <h2 class="font-semibold text-gray-700">Contato Inicial</h2>
+                    <span class="text-sm bg-gray-200 text-gray-600 px-2 py-0.5 rounded-full">3</span>
+                </div>
+                <div class="space-y-2">
+                    <div class="bg-white p-3 rounded-lg shadow text-sm">
+                        <div class="font-medium">Douglas Silva</div>
+                        <div class="text-gray-500">EcoTech Soluções</div>
+                    </div>
+                    <div class="bg-white p-3 rounded-lg shadow text-sm">
+                        <div class="font-medium">Marina Oliveira</div>
+                        <div class="text-gray-500">Aqua Verde</div>
+                    </div>
+                    <div class="bg-white p-3 rounded-lg shadow text-sm">
+                        <div class="font-medium">Felipe Costa</div>
+                        <div class="text-gray-500">Nova Energia</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Etapa 2 -->
+            <div class="bg-blue-50 rounded-xl p-4">
+                <div class="flex items-center justify-between mb-3">
+                    <h2 class="font-semibold text-blue-700">Reunião Realizada</h2>
+                    <span class="text-sm bg-blue-200 text-blue-700 px-2 py-0.5 rounded-full">2</span>
+                </div>
+                <div class="space-y-2">
+                    <div class="bg-white p-3 rounded-lg shadow text-sm">
+                        <div class="font-medium">Carlos Ramos</div>
+                        <div class="text-gray-500">TechMax Ltda</div>
+                    </div>
+                    <div class="bg-white p-3 rounded-lg shadow text-sm">
+                        <div class="font-medium">Luciana Fernandes</div>
+                        <div class="text-gray-500">Smart Retail</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Etapa 3 -->
+            <div class="bg-purple-50 rounded-xl p-4">
+                <div class="flex items-center justify-between mb-3">
+                    <h2 class="font-semibold text-purple-700">Proposta Enviada</h2>
+                    <span class="text-sm bg-purple-200 text-purple-700 px-2 py-0.5 rounded-full">4</span>
+                </div>
+                <div class="space-y-2">
+                    <div class="bg-white p-3 rounded-lg shadow text-sm">
+                        <div class="font-medium">Fernanda Lima</div>
+                        <div class="text-gray-500">Viva Verde</div>
+                    </div>
+                    <div class="bg-white p-3 rounded-lg shadow text-sm">
+                        <div class="font-medium">Ricardo Almeida</div>
+                        <div class="text-gray-500">LogiCorp</div>
+                    </div>
+                    <div class="bg-white p-3 rounded-lg shadow text-sm">
+                        <div class="font-medium">Patrícia Souza</div>
+                        <div class="text-gray-500">Green Future</div>
+                    </div>
+                    <div class="bg-white p-3 rounded-lg shadow text-sm">
+                        <div class="font-medium">João Pedro</div>
+                        <div class="text-gray-500">AgroTech</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Etapa 4 -->
+            <div class="bg-yellow-50 rounded-xl p-4">
+                <div class="flex items-center justify-between mb-3">
+                    <h2 class="font-semibold text-yellow-700">Ajustes</h2>
+                    <span class="text-sm bg-yellow-200 text-yellow-700 px-2 py-0.5 rounded-full">1</span>
+                </div>
+                <div class="space-y-2">
+                    <div class="bg-white p-3 rounded-lg shadow text-sm">
+                        <div class="font-medium">Bruno Santos</div>
+                        <div class="text-gray-500">InovaSolar</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Etapa 5 -->
+            <div class="bg-green-50 rounded-xl p-4">
+                <div class="flex items-center justify-between mb-3">
+                    <h2 class="font-semibold text-green-700">Fechados</h2>
+                    <span class="text-sm bg-green-200 text-green-700 px-2 py-0.5 rounded-full">2</span>
+                </div>
+                <div class="space-y-2">
+                    <div class="bg-white p-3 rounded-lg shadow text-sm">
+                        <div class="font-medium">Ana Paula</div>
+                        <div class="text-gray-500">EcoPower Solutions</div>
+                    </div>
+                    <div class="bg-white p-3 rounded-lg shadow text-sm">
+                        <div class="font-medium">Marcelo Gomes</div>
+                        <div class="text-gray-500">BioGreen</div>
+                    </div>
+                </div>
+            </div>
+    <!-- Bottom nav -->
+    <nav class="sticky bottom-0 w-full border-t bg-white bg-opacity-60 backdrop-blur-sm flex justify-around py-4">
+        <a href="index.html" class="hover:text-blue-500 rounded transition-colors"><i data-lucide="home" class="w-6 h-6"></i></a>
+        <a href="search.html" class="hover:text-blue-500 rounded transition-colors"><i data-lucide="search" class="w-6 h-6"></i></a>
+        <a href="inbox.html" class="hover:text-blue-500 rounded transition-colors"><i data-lucide="inbox" class="w-6 h-6"></i></a>
+        <a href="new.html" class="hover:text-blue-500 rounded transition-colors"><i data-lucide="edit-3" class="w-6 h-6"></i></a>
+    </nav>
+        </main>
+
+
+
+    </div>
+
+    <script src="app.js"></script>
     <script>
         lucide.createIcons();
-    </script> 
+    </script>
 </body>
+
 </html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agenda CRM - Pesquisa</title>
+    <link href="style.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="bg-white text-gray-800">
+
+    <main class="p-4 pb-24 space-y-4">
+
+        <div class="flex items-center space-x-2">
+            <div class="relative flex-1">
+                <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"></i>
+                <input type="text" placeholder="Pesquisar" class="w-full pl-9 p-2 rounded-xl bg-slate-50 focus:outline-none" />
+            </div>
+            <button class="p-1 hover:text-blue-500 hover:bg-slate-50 rounded transition-colors">
+                <i data-lucide="list-filter" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <div class="space-y-6">
+
+            <!-- Recent Searches -->
+            <div class="space-y-4">
+                <h2 class="text-sm font-semibold text-gray-500 uppercase">Pesquisas recentes</h2>
+
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-xs text-gray-400 uppercase">Hoje</h3>
+                        <ul class="mt-2 space-y-2">
+                            <li class="cursor-pointer hover:bg-gray-100 rounded-md p-2">Carlos da Silva</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xs text-gray-400 uppercase">Ontem</h3>
+                        <ul class="mt-2 space-y-2">
+                            <li class="cursor-pointer hover:bg-gray-100 rounded-md p-2">Barros Paraguaçu</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xs text-gray-400 uppercase">Essa semana</h3>
+                        <ul class="mt-2 space-y-2">
+                            <li class="cursor-pointer hover:bg-gray-100 rounded-md p-2">Charles Light</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recently Visited -->
+            <div class="space-y-4">
+                <h2 class="text-sm font-semibold text-gray-500 uppercase">Visitado recentemente</h2>
+
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-xs text-gray-400 uppercase">Hoje</h3>
+                        <ul class="mt-2 space-y-2">
+                            <li class="cursor-pointer hover:bg-gray-100 rounded-md p-2 flex items-center space-x-2">
+                                <span>⚡</span>
+                                <span>Charles Light</span>
+                                <span class="text-gray-400 text-xs">em Campanha São João</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xs text-gray-400 uppercase">Ontem</h3>
+                        <ul class="mt-2 space-y-2">
+                            <li class="cursor-pointer hover:bg-gray-100 rounded-md p-2 flex items-center space-x-2">
+                                <span>🚀</span>
+                                <span>Campanha São João</span>
+                                <span class="text-gray-400 text-xs">em Negociações</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xs text-gray-400 uppercase">Essa semana</h3>
+                        <ul class="mt-2 space-y-2">
+                            <li class="cursor-pointer hover:bg-gray-100 rounded-md p-2 flex items-center space-x-2">
+                                <span>🌱</span>
+                                <span>Barros Paraguaçu</span>
+                                <span class="text-gray-400 text-xs">em Campanha São João</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <nav class="fixed bottom-0 w-full border-t bg-white bg-opacity-60 backdrop-blur-sm flex justify-around py-4">
+        <a href="index.html"><i data-lucide="home" class="w-6 h-6"></i></a>
+        <i data-lucide="search" class="w-6 h-6 text-blue-500"></i>
+        <a href="inbox.html"><i data-lucide="inbox" class="w-6 h-6"></i></a>
+        <a href="new.html"><i data-lucide="user-round-pen" class="w-6 h-6"></i></a>
+    </nav>
+
+    <script src="app.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
