@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agenda CRM – Contato</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: { extend: { transitionProperty: { 'transform-opacity': 'transform, opacity' } } }
+        }
+    </script>
+    <style>
+        #sidebar.open { transform: translateX(0) !important; }
+        #mainContent { transition: transform .3s ease; }
+        #mainContent.shifted { transform: translateX(80vw); }
+        #overlay.active { opacity: 1 !important; visibility: visible !important; }
+    </style>
+</head>
+
+<body class="bg-white text-gray-800">
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black/50 z-40 opacity-0 invisible transition-opacity"></div>
+
+    <!-- Sidebar -->
+    <div id="sidebar"
+         class="fixed top-0 left-0 w-4/5 h-full bg-white shadow-2xl z-50 flex flex-col -translate-x-full transition-transform">
+        <div class="flex items-center justify-between p-6">
+            <img src="https://app.agendacrm.com.br/img/logo.png" alt="Logo" class="h-10">
+        </div>
+        <nav class="flex-1 py-4 flex flex-col">
+            <div class="space-y-1">
+                <a href="index.html" class="flex items-center px-6 py-3 font-medium hover:bg-gray-100 transition-colors">
+                    <i data-lucide="home" class="w-5 h-5 mr-4"></i>
+                    <span>Início</span>
+                </a>
+                <a href="contatos.html" class="flex items-center px-6 py-3 font-medium hover:bg-gray-100 transition-colors">
+                    <i data-lucide="users" class="w-5 h-5 mr-4"></i>
+                    <span>Contatos</span>
+                </a>
+                <a href="agenda.html" class="flex items-center px-6 py-3 font-medium hover:bg-gray-100 transition-colors">
+                    <i data-lucide="calendar" class="w-5 h-5 mr-4"></i>
+                    <span>Agenda</span>
+                </a>
+                <a href="negociacao.html" class="flex items-center px-6 py-3 font-medium hover:bg-gray-100 transition-colors">
+                    <i data-lucide="bar-chart-2" class="w-5 h-5 mr-4"></i>
+                    <span>Negociações</span>
+                </a>
+                <a href="relatorios.html" class="flex items-center px-6 py-3 font-medium hover:bg-gray-100 transition-colors">
+                    <i data-lucide="pie-chart" class="w-5 h-5 mr-4"></i>
+                    <span>Relatórios</span>
+                </a>
+            </div>
+            <div class="flex-1"></div>
+            <div class="border-t border-gray-200 mx-6 pt-6">
+                <a href="#" class="flex items-center py-1 text-gray-600 hover:bg-gray-100 text-sm">
+                    <i data-lucide="settings" class="w-4 h-4 mr-4"></i>
+                    <span>Configurações</span>
+                </a>
+                <a href="#" class="flex items-center py-1 text-gray-600 hover:bg-gray-100 text-sm">
+                    <i data-lucide="trash" class="w-4 h-4 mr-4"></i>
+                    <span>Lixeira</span>
+                </a>
+                <a href="#" class="flex items-center py-1 text-gray-600 hover:bg-gray-100 text-sm">
+                    <i data-lucide="help-circle" class="w-4 h-4 mr-4"></i>
+                    <span>Ajuda e Suporte</span>
+                </a>
+            </div>
+        </nav>
+        <div class="mx-6 py-4 border-t border-gray-200">
+            <div class="flex items-center space-x-3 cursor-pointer hover:opacity-80">
+                <div class="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center font-bold">GO</div>
+                <div class="flex items-center space-x-1">
+                    <span class="font-bold">Girlan Outdoor</span>
+                    <i data-lucide="chevrons-up-down" class="w-4 h-4 text-gray-500"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main id="mainContent" class="transition-transform duration-300">
+        <header class="flex justify-between items-center p-4">
+            <div id="menuButton" class="flex items-center space-x-2 cursor-pointer hover:opacity-80">
+                <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                <h1 class="text-sm font-medium">Contatos</h1>
+            </div>
+        </header>
+
+        <div class="p-4 pb-28 space-y-6">
+            <!-- Dados pessoais -->
+            <section class="bg-white border rounded-xl p-4 shadow-sm">
+                <h2 class="font-semibold mb-3">Dados Pessoais</h2>
+                <div class="space-y-2 text-sm">
+                    <p><strong>Nome:</strong> Luis</p>
+                    <p><strong>Empresa:</strong> Agencia Stamp</p>
+                    <p><strong>WhatsApp:</strong> <a href="https://wa.me/5545991317580" target="_blank" class="text-blue-600">(45) 99131-7580</a></p>
+                    <!--p><strong>E-mail:</strong> <a href="mailto:carlos@ecopower.com" class="text-blue-600">carlos@ecopower.com</a></p-->
+                </div>
+            </section>
+
+            <!-- Negócios Stats -->
+            <section class="bg-white border rounded-xl p-4 shadow-sm">
+                <h2 class="font-semibold mb-3">Negócios Stats</h2>
+                <div class="flex justify-around text-center text-sm">
+                    <div>
+                        <p class="text-2xl font-bold text-blue-600">14</p>
+                        <p class="text-gray-500">Total</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-bold text-green-600">3</p>
+                        <p class="text-gray-500">Fechados</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-bold text-yellow-600">7</p>
+                        <p class="text-gray-500">Abertos</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-bold text-red-600">4</p>
+                        <p class="text-gray-500">Perdidos</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Últimas Atividades -->
+            <section class="bg-white border rounded-xl p-4 shadow-sm">
+                <h2 class="font-semibold mb-3">Últimas Atividades</h2>
+                <ul class="space-y-3">
+                    <li class="flex items-start space-x-3">
+                        <i data-lucide="calendar-check" class="w-5 h-5 mt-0.5 text-green-600"></i>
+                        <div>
+                            <p class="text-sm font-medium">Reunião realizada</p>
+                            <p class="text-xs text-gray-500">2 dias atrás</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start space-x-3">
+                        <i data-lucide="file-text" class="w-5 h-5 mt-0.5 text-purple-600"></i>
+                        <div>
+                            <p class="text-sm font-medium">Proposta enviada</p>
+                            <p class="text-xs text-gray-500">5 dias atrás</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start space-x-3">
+                        <i data-lucide="phone" class="w-5 h-5 mt-0.5 text-blue-600"></i>
+                        <div>
+                            <p class="text-sm font-medium">Ligação de follow-up</p>
+                            <p class="text-xs text-gray-500">10 dias atrás</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start space-x-3">
+                        <i data-lucide="mail" class="w-5 h-5 mt-0.5 text-gray-600"></i>
+                        <div>
+                            <p class="text-sm font-medium">Email de apresentação</p>
+                            <p class="text-xs text-gray-500">15 dias atrás</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start space-x-3">
+                        <i data-lucide="user-plus" class="w-5 h-5 mt-0.5 text-indigo-600"></i>
+                        <div>
+                            <p class="text-sm font-medium">Contato cadastrado</p>
+                            <p class="text-xs text-gray-500">18 dias atrás</p>
+                        </div>
+                    </li>
+                </ul>
+                <div class="mt-4 text-center">
+                    <button class="text-blue-600 text-sm hover:underline">+ Carregar mais</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Bottom nav -->
+    <nav class="fixed bottom-0 w-full border-t bg-white flex justify-around py-2">
+        <a href="index.html"><i data-lucide="home" class="w-6 h-6"></i></a>
+        <a href="search.html"><i data-lucide="search" class="w-6 h-6"></i></a>
+        <a href="inbox.html"><i data-lucide="inbox" class="w-6 h-6"></i></a>
+        <a href="new.html"><i data-lucide="edit-3" class="w-6 h-6"></i></a>
+    </nav>
+
+    <script src="app.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
